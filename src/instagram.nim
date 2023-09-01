@@ -5,8 +5,14 @@ export core
 import instagram/api/users
 export users
 
+import instagram/api/media
+export media
+
 when isMainModule:
+  import json
   import asyncdispatch
   let ig = waitFor newInstagram()
-  let user = waitFor ig.user "hak5gear"
-  echo user.biography
+  # let user = waitFor ig.user "microsoft"
+  let user = waitFor ig.post "3140623659379585160"
+  
+  echo pretty %*user

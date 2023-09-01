@@ -5,4 +5,6 @@
 - Init
 - Added core
 - Added user types
-- Added user endpoint
+- Added user API endpoint
+- Fixed user types
+- Added media API endpoint

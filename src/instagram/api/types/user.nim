@@ -11,9 +11,9 @@ type
     biography*: string
     bioLinks*: seq[BioLinks]
     # fbProfileBiolink*: NilType
-    # biographyWithEntities*: BiographyWithEntities
+    biographyWithEntities*: BiographyWithEntities
     blockedByViewer*: bool
-    # restrictedByViewer*: NilType
+    restrictedByViewer*: bool
     countryBlock*: bool
     eimuId*: string
     externalUrl*: string
@@ -91,7 +91,7 @@ type
   EdgeFelixVideoTimeline* = ref object
     count*: int64
     pageInfo*: PageInfo
-    edges*: seq[Edges]
+    edges*: seq[Edges] ## Posts
   PageInfo* = ref object
     hasNextPage*: bool
     endCursor*: string
@@ -130,7 +130,7 @@ type
     thumbnailSrc*: string
     thumbnailResources*: seq[ThumbnailResources]
     # felixProfileGridCrop*: NilType
-    # coauthorProducers*: seq[NilType]
+    coauthorProducers*: seq[CoauthorProducers]
     # pinnedForUsers*: seq[NilType]
     viewerCanReshare*: bool
     # encodingStatus*: NilType
@@ -182,6 +182,11 @@ type
     src*: string
     configWidth*: int64
     configHeight*: int64
+  CoauthorProducers* = ref object
+    id*: string
+    isVerified*: bool
+    profilePicUrl*: string
+    username*: string
   EdgeOwnerToTimelineMedia* = ref object
     count*: int64
     pageInfo*: PageInfo2
@@ -207,7 +212,7 @@ type
     owner*: Owner2
     isVideo*: bool
     hasUpcomingEvent*: bool
-    # accessibilityCaption*: NilType
+    accessibilityCaption*: string
     edgeMediaToCaption*: EdgeMediaToCaption2
     edgeMediaToComment*: EdgeMediaToComment2
     commentsDisabled*: bool
@@ -218,24 +223,25 @@ type
     # nftAssetInfo*: NilType
     thumbnailSrc*: string
     thumbnailResources*: seq[ThumbnailResources2]
-    # coauthorProducers*: seq[NilType]
+    coauthorProducers*: seq[CoauthorProducers2]
     pinnedForUsers*: seq[PinnedForUsers]
     viewerCanReshare*: bool
+    edgeSidecarToChildren*: EdgeSidecarToChildren
   Dimensions2* = ref object
     height*: int64
     width*: int64
   EdgeMediaToTaggedUser2* = ref object
-    # edges*: seq[NilType]
+    edges*: seq[Edges5]
+  Edges5* = ref object
+    node*: Node2
   SharingFrictionInfo2* = ref object
     shouldHaveSharingFriction*: bool
     # bloksAppUrl*: NilType
   Owner2* = ref object
     id*: string
     username*: string
-  EdgeMediaToCaption2* = ref object
+  EdgeMediaToCaption2* = ref object  
     edges*: seq[Edges5]
-  Edges5* = ref object
-    node*: Node5
   Node5* = ref object
     text*: string
   EdgeMediaToComment2* = ref object
@@ -244,6 +250,42 @@ type
     count*: int64
   EdgeMediaPreviewLike2* = ref object
     count*: int64
+  CoauthorProducers2* = ref object
+    id*: string
+    isVerified*: bool
+    profilePicUrl*: string
+    username*: string
+  EdgeSidecarToChildren* = ref object
+    edges*: seq[Edges7]
+  Edges7* = ref object
+    node*: Node7
+  Node7* = ref object
+    typename*: string
+    id*: string
+    shortcode*: string
+    dimensions*: Dimensions3
+    displayUrl*: string
+    edgeMediaToTaggedUser*: EdgeMediaToTaggedUser3
+    # factCheckOverallRating*: NilType
+    # factCheckInformation*: NilType
+    # gatingInfo*: NilType
+    sharingFrictionInfo*: SharingFrictionInfo3
+    # mediaOverlayInfo*: NilType
+    mediaPreview*: string
+    owner*: Owner2
+    isVideo*: bool
+    hasUpcomingEvent*: bool
+    accessibilityCaption*: string
+  SharingFrictionInfo3* = ref object
+    shouldHaveSharingFriction*: bool
+    # bloksAppUrl*: NilType
+  Dimensions3* = ref object
+    height*: int64
+    width*: int64
+  EdgeMediaToTaggedUser3* = ref object
+    edges*: seq[Edges2]
+  Edges8* = ref object
+    node*: Node5
   ThumbnailResources2* = ref object
     src*: string
     configWidth*: int64

@@ -35,6 +35,7 @@ proc setupCodes(ig) {.async.} =
 proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   ## Creates new Instagram instance
   new result
+  result.cookies = cookies
   await setupCodes result
 
 proc get*(ig; endpoint: string): Future[string] {.async.} =
@@ -59,5 +60,6 @@ when isMainModule:
   import std/json
   
   let ig = waitFor newInstagram()
-  let data = waitFor ig.get "users/web_profile_info/?username=hak5gear"
+  # let data = waitFor ig.get "media/3140623659379585160/comments/?can_support_threading=true&permalink_enabled=false"
+  let data = waitFor ig.get "users/web_profile_info/?username=microsoft"
   echo data
