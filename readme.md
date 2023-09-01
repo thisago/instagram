@@ -18,10 +18,6 @@ The following internal endpoints are implemented:
 
 - `users/web_profile_info`: Gets all info used to render the user page
 
-## TODO
-
-- [ ] Markdown responses
-
 ## License
 
-This Telegram bot is open source software licensed over GPL-3 license! Enjoy the **power of open source**!
+This library is licensed over MIT license!
