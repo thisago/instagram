@@ -2,7 +2,7 @@
 
 # Instagram
 
-### Instagram data, in a instant 
+#### Instagram data, in a instant 
 
 **[About](#about) - [Features](#features)** - [License](#license)
 
@@ -14,20 +14,9 @@ This library is a implementation of internal Instagram web API.
 
 ## Features
 
-The following data can be collected:
+The following internal endpoints are implemented:
 
-\***Still unusable**\*
-
-<!-- - User -->
-<!--   - Basic Info -->
-<!--   - Followers -->
-<!--   - Following -->
-<!--   - Posts -->
-<!-- - Post -->
-<!--   - Basic info -->
-<!--   - Medias -->
-<!--   - Comments -->
-<!--     - Replies -->
+- `users/web_profile_info`: Gets all info used to render the user page
 
 ## TODO
 
