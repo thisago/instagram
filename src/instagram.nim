@@ -5,6 +5,6 @@ export core
 import instagram/api/get
 export get
 
-proc hasNextPage*(obj: IgFollowers or IgFeed): bool =
+proc hasNextPage*(obj: IgFollowersAndFollowing or IgFeed): bool =
   ## Check if exists next page
   obj.nextMaxId.len > 0

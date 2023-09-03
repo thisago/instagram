@@ -31,6 +31,7 @@ suite "Get Instagram data":
     require user.fullName == "Microsoft"
     require user.categoryEnum == "SCIENCE_ENGINEERING"
     require user.businessCategoryName == "Business & Utility Services"
+
   test "Post":
     let postId = user.edgeOwnerToTimelineMedia.edges[0].node.id
     humanize:
@@ -38,8 +39,9 @@ suite "Get Instagram data":
     require post.status == "ok"
     require post.commentCount > 44
     require "Albert D." in post.caption.text
+
   test "Followers":
-    proc testFollowers(uid: string; last: IgFollowers = nil): IgFollowers =
+    proc testFollowers(uid: string; last: IgFollowersAndFollowing = nil): IgFollowersAndFollowing =
       humanize:
         if last.isNil:
           result = waitFor ig.followers uid
@@ -53,6 +55,22 @@ suite "Get Instagram data":
     let fllwrs = testFollowers "188008629"
     require fllwrs.hasNextPage
     require "188008629".testFollowers(fllwrs).users[0].username != fllwrs.users[0].username
+
+  test "Following":
+    proc testFollowing(uid: string; last: IgFollowersAndFollowing = nil): IgFollowersAndFollowing =
+      humanize:
+        if last.isNil:
+          result = waitFor ig.following uid
+        elif last.hasNextPage:
+          result = waitFor ig.following(uid, last)
+      require result.status == "ok"
+      for follower in result.users:
+        require follower.username.len > 0
+
+    let fllwrs = user.id.testFollowing
+    require fllwrs.hasNextPage
+    require "188008629".testFollowing(fllwrs).users[0].username != fllwrs.users[0].username
+
   test "Feed":
     proc testFeed(uid: IgUser; last: IgFeed = nil): IgFeed =
       humanize:

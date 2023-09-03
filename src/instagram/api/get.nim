@@ -6,8 +6,6 @@ import instagram/core
 
 import instagram/api/types/user
 export user except IgUserResponse
-import instagram/api/types/followers
-export followers
 
 proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   ## Gets instagram user from their internal API
@@ -18,22 +16,42 @@ proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   result.status = resp.status
   result.message = resp.message
 
+import instagram/api/types/followersAndFollowing
+export followersAndFollowing
+
 proc followers*(
   ig: Instagram;
   userId: string or IgUser; ## User ID or User
-  nextMaxId: string or IgFollowers = ""; ## Next max ID or Followers
+  nextMaxId: string or IgFollowersAndFollowing = ""; ## Next max ID or Followers
   limit = 12
-): Future[IgFollowers] {.async.} =
+): Future[IgFollowersAndFollowing] {.async.} =
   ## Gets the user followers
   when userId is IgUser:
     let userId = userId.id
-  when nextMaxId is IgFollowers:
+  when nextMaxId is IgFollowersAndFollowing:
     let nextMaxId = nextMaxId.nextMaxId
 
   let json = await ig.get endpoint("friendships/$#/followers/?count=$#&max_id=$#&search_surface=follow_list_page",
                                    userId, $limit,
                                    if nextMaxId.len > 0: nextMaxId else: $limit)
-  result = json.fromJson IgFollowers
+  result = json.fromJson IgFollowersAndFollowing
+
+proc following*(
+  ig: Instagram;
+  userId: string or IgUser; ## User ID or User
+  nextMaxId: string or IgFollowersAndFollowing = ""; ## Next max ID or Followers
+  limit = 12
+): Future[IgFollowersAndFollowing] {.async.} =
+  ## Gets the user following
+  when userId is IgUser:
+    let userId = userId.id
+  when nextMaxId is IgFollowersAndFollowing:
+    let nextMaxId = nextMaxId.nextMaxId
+
+  let json = await ig.get endpoint("friendships/$#/following/?count=$#&max_id=$#&search_surface=follow_list_page",
+                                   userId, $limit,
+                                   if nextMaxId.len > 0: nextMaxId else: $limit)
+  result = json.fromJson IgFollowersAndFollowing
 
 import instagram/api/types/post
 export post

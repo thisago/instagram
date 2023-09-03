@@ -1,7 +1,7 @@
 type
   # NilType* = ref object
-  IgFollowers* = ref object
-    users*: seq[IgFollowersUsers]
+  IgFollowersAndFollowing* = ref object
+    users*: seq[IgFollowersUser]
     bigList*: bool
     pageSize*: int64
     nextMaxId*: string
@@ -10,7 +10,7 @@ type
     useClickableSeeMore*: bool
     status*: string
     message*: string ## Error message
-  IgFollowersUsers* = ref object
+  IgFollowersUser* = ref object
     fbidV2*: string
     pk*: string
     pkId*: string
@@ -27,6 +27,7 @@ type
     isPossibleBadActor*: IgFollowersIsPossibleBadActor
     shouldShowWarning*: bool
     latestReelMedia*: int64
+    is_favorite*: bool
   IgFollowersIsPossibleBadActor* = ref object
     isPossibleScammer*: bool
     isPossibleImpersonator*: IgFollowersIsPossibleImpersonator

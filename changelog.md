@@ -10,7 +10,8 @@
 - Improved tests
 - Moved all data getting API endpoints to a single file
 - Cleaning
-- Added CSRF token!
+- Added CSRF token bypass!
+- Added `following` extraction
 
 ## Version 0.1.0 (2023/09/01)
 
