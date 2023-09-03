@@ -28,7 +28,9 @@ The following internal endpoints are implemented:
 
 ## TODO
 
-- [ ] Add more pages getting to post comments
+- [ ] Get post comments
+- [ ] Like a post
+- [ ] (Un)Follow a user
 
 ## License
 
