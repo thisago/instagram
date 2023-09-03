@@ -6,6 +6,7 @@
 - Added followers endpoint; Now you can request the user followers by pages
 - Added tests for user and post endpoints
 - Renamed all types
+- Added tests for followers
 
 ## Version 0.1.0... (2023/09/01)
 

@@ -12,8 +12,7 @@ template humanize(body: untyped; minTaskTime = 1000; maxTaskTime = 0): untyped =
   var maxTaskT = maxTaskTime
   if maxTaskTime < minTaskTime:
     maxTaskT = minTaskTime * 2
-  template delay: int =
-    int(rand(minTaskTime..maxTaskT) / 2)
+  template delay: int = int(rand(minTaskTime..maxTaskT) / 2)
   waitFor sleepAsync delay
   body
   waitFor sleepAsync delay
@@ -38,3 +37,9 @@ suite "Get Instagram data":
     require post.status == "ok"
     require post.commentCount > 44
     require "Albert D." in post.caption.text
+  test "Followers":
+    humanize:
+      let followers = waitFor ig.followers user
+    require followers.status == "ok"
+    for follower in followers.users:
+      require follower.username.len > 0
