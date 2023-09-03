@@ -7,9 +7,12 @@ type
   IgUserResponse* = ref object
     data*: IgUserData
     status*: string
+    message*: string ## Error message
   IgUserData = ref object
     user*: IgUser
   IgUser* = ref object
+    status*: string
+    message*: string ## Error message
     biography*: string
     bioLinks*: seq[IgUserBioLinks]
     # fbProfileBiolink*: NilType

@@ -9,6 +9,7 @@ type
     shouldLimitListOfFollowers*: bool
     useClickableSeeMore*: bool
     status*: string
+    message*: string ## Error message
   IgFollowersUsers* = ref object
     fbidV2*: string
     pk*: string

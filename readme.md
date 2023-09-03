@@ -2,7 +2,7 @@
 
 # Instagram
 
-#### Instagram data, in a instant
+#### Instagram internal web api implementation
 
 **[About](#about) - [Features](#features)** - [License](#license)
 
@@ -12,13 +12,18 @@
 
 This library is a implementation of internal Instagram web API.
 
+With this library, you can get data and even interact with Instagram!
+
 ## Features
 
 The following internal endpoints are implemented:
 
-- `api/v1/users/web_profile_info`: Gets all info used to render the user page
-- `api/v1/media/{postId}/comments`: All data used to render the post
-- `api/v1/friendships/{userId}/followers`: User followers, given by pages
+- **`ig.user("username")`** <sup>(`/api/v1/users/web_profile_info`)</sup>: Gets all info used to render the user page
+- **`ig.post("postId")`** <sup>(`/api/v1/media/{postId}/comments`)</sup>: All data used to render the post
+- **`ig.followers("userId")`** <sup>(`/api/v1/friendships/{userId}/followers`)</sup>: User followers, given by pages
+- **`ig.feed("userId")`** <sup>(`/api/v1/feed/user/{userId}`)</sup>: Feed data, posts
+
+\* **`Ig`** is a Instagram object
 
 ## TODO
 

@@ -23,6 +23,7 @@ type
     isRanked*: bool
     commentFilterParam*: string
     status*: string
+    message*: string ## Error message
   IgPostComments* = ref object
     hasLikedComment*: bool
     commentLikeCount*: int64

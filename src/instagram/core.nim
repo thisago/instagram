@@ -6,8 +6,9 @@ import pkg/unifetch
 from pkg/util/forStr import between
 
 type
-  InstagramTooManyRequests* = ref object of Exception
+  InstagramTooManyRequests* = ref object of IOError
     ## Rate limit exceeded, provide the cookies
+    ## TODO: Implement
 
 type
   Instagram* = ref object
@@ -39,7 +40,6 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   await setupCodes result
 
 # Don't export as library procs
-
 proc get*(ig; endpoint: string): Future[string] {.async.} =
   ## Requests to Instagram internal api
   let
@@ -54,16 +54,7 @@ proc get*(ig; endpoint: string): Future[string] {.async.} =
   close uni
 
   result = req.body
+  # writeFile("out.json", req.body)
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args
-
-when isMainModule:
-  import std/json
-
-  const cookies = staticRead "../../developmentcookies.txt"
-  let ig = waitFor newInstagram cookies
-  # let data = waitFor ig.get "media/3140623659379585160/comments/?can_support_threading=true&permalink_enabled=false"
-  # let data = waitFor ig.get "users/web_profile_info/?username=microsoft"
-  let data = waitFor ig.get "friendships/57011964897/followers/?count=12&search_surface=follow_list_page"
-  echo data

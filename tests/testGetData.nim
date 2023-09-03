@@ -8,7 +8,7 @@ import instagram
 
 randomize()
 
-template humanize(body: untyped; minTaskTime = 1000; maxTaskTime = 0): untyped =
+template humanize(body: untyped; minTaskTime = 1500; maxTaskTime = 0): untyped =
   var maxTaskT = maxTaskTime
   if maxTaskTime < minTaskTime:
     maxTaskT = minTaskTime * 2
@@ -20,6 +20,7 @@ template humanize(body: untyped; minTaskTime = 1000; maxTaskTime = 0): untyped =
 const cookies = staticRead "../developmentcookies.txt"
 let ig = waitFor newInstagram cookies
 var user: IgUser
+
 
 suite "Get Instagram data":
   test "User":
@@ -38,8 +39,30 @@ suite "Get Instagram data":
     require post.commentCount > 44
     require "Albert D." in post.caption.text
   test "Followers":
-    humanize:
-      let followers = waitFor ig.followers user
-    require followers.status == "ok"
-    for follower in followers.users:
-      require follower.username.len > 0
+    proc testFollowers(uid: string; last: IgFollowers = nil): IgFollowers =
+      humanize:
+        if last.isNil:
+          result = waitFor ig.followers uid
+        elif last.hasNextPage:
+          result = waitFor ig.followers(uid, last)
+      require result.status == "ok"
+      for follower in result.users:
+        require follower.username.len > 0
+
+    require not user.id.testFollowers.hasNextPage
+    let fllwrs = testFollowers "188008629"
+    require fllwrs.hasNextPage
+    require "188008629".testFollowers(fllwrs).users[0].username != fllwrs.users[0].username
+  test "Feed":
+    proc testFeed(uid: IgUser; last: IgFeed = nil): IgFeed =
+      humanize:
+        if last.isNil:
+          result = waitFor ig.feed uid
+        elif last.hasNextPage:
+          result = waitFor ig.feed(uid, last)
+      require result.status == "ok"
+      for post in result.items:
+        require post.caption.text.len > 0
+    let fd = user.testFeed
+    require fd.hasNextPage
+    require user.testFeed(fd).items[0].caption.text != fd.items[0].caption.text
