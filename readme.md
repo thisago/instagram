@@ -49,7 +49,7 @@ let ig = waitFor newInstagram() # No cookies, there's rate limit
 let loggedIg = waitFor newInstagram "YOUR COOKIES" # With login
 ```
 
-To get cookies, consider using [iecook](https://github.com/thisagp/iecook) because it gets the HttpOnly cookies, the needed ones. automatically.
+To get cookies, consider using [iecook](https://github.com/thisago/iecook) because it gets the HttpOnly cookies, the needed ones. automatically.
 
 **[...]**
 
