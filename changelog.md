@@ -4,6 +4,8 @@
 
 - Fixed user type
 - Added followers endpoint; Now you can request the user followers by pages
+- Added tests for user and post endpoints
+- Renamed all types
 
 ## Version 0.1.0... (2023/09/01)
 

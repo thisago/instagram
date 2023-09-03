@@ -1,4 +1,4 @@
-import instagram/core except get
+import instagram/core except get, endpoint
 export core
 
 # API
@@ -13,9 +13,10 @@ when isMainModule:
   import asyncdispatch
   const cookies = staticRead "../developmentcookies.txt"
   let ig = waitFor newInstagram cookies
-  # let user = waitFor ig.user "olobocacador"
-  # let user = waitFor ig.post "3140623659379585160"
-  let followers = waitFor ig.followers "57011964897"
+  # let user = waitFor ig.user "microsoft"
+  let user = waitFor ig.post "3182352174481337412"
+  # let followers = waitFor ig.followers "57011964897"
 
-  echo pretty %*followers
-  echo pretty %*waitFor ig.followers("57011964897", followers)
+  echo pretty %*user
+  # echo pretty %*followers
+  # echo pretty %*waitFor ig.followers("57011964897", followers)

@@ -1,7 +1,7 @@
 type
   # NilType* = ref object
-  Followers* = ref object
-    users*: seq[Users]
+  IgFollowers* = ref object
+    users*: seq[IgFollowersUsers]
     bigList*: bool
     pageSize*: int64
     nextMaxId*: string
@@ -9,7 +9,7 @@ type
     shouldLimitListOfFollowers*: bool
     useClickableSeeMore*: bool
     status*: string
-  Users* = ref object
+  IgFollowersUsers* = ref object
     fbidV2*: string
     pk*: string
     pkId*: string
@@ -23,16 +23,16 @@ type
     profilePicUrl*: string
     # accountBadges*: seq[NilType]
     isPossibleScammer*: bool
-    isPossibleBadActor*: IsPossibleBadActor
+    isPossibleBadActor*: IgFollowersIsPossibleBadActor
     shouldShowWarning*: bool
     latestReelMedia*: int64
-  IsPossibleBadActor* = ref object
+  IgFollowersIsPossibleBadActor* = ref object
     isPossibleScammer*: bool
-    isPossibleImpersonator*: IsPossibleImpersonator
-    isPossibleImpersonatorThreads*: IsPossibleImpersonatorThreads
-  IsPossibleImpersonator* = ref object
+    isPossibleImpersonator*: IgFollowersIsPossibleImpersonator
+    isPossibleImpersonatorThreads*: IgFollowersIsPossibleImpersonatorThreads
+  IgFollowersIsPossibleImpersonator* = ref object
     isUnconnectedImpersonator*: bool
     # connectedSimilarUserId*: NilType
-  IsPossibleImpersonatorThreads* = ref object
+  IgFollowersIsPossibleImpersonatorThreads* = ref object
     isUnconnectedImpersonator*: bool
     # connectedSimilarUserId*: NilType

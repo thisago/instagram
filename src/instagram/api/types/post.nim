@@ -2,33 +2,33 @@
 
 type
   # NilType* = ref object
-  Post* = ref object
+  IgPost* = ref object
     commentLikesEnabled*: bool
-    comments*: seq[Comments]
+    comments*: seq[IgPostComments]
     commentCount*: int64
-    caption*: Caption
+    caption*: IgPostCaption
     captionIsEdited*: bool
     hasMoreComments*: bool
     hasMoreHeadloadComments*: bool
     likedByMediaOwnerBadgeEnabled*: bool
-    previewComments*: seq[PreviewComments]
+    previewComments*: seq[IgPostIgPostPreviewComments]
     threadingEnabled*: bool
     mediaHeaderDisplay*: string
     initiateAtTop*: bool
     insertNewCommentToTop*: bool
-    quickResponseEmojis*: seq[QuickResponseEmojis]
+    quickResponseEmojis*: seq[IgPostQuickResponseEmojis]
     canViewMorePreviewComments*: bool
     scrollBehavior*: int64
     commentCoverPos*: string
     isRanked*: bool
     commentFilterParam*: string
     status*: string
-  Comments* = ref object
+  IgPostComments* = ref object
     hasLikedComment*: bool
     commentLikeCount*: int64
     childCommentCount*: int64
-    previewChildComments*: seq[PreviewChildComments]
-    otherPreviewUsers*: seq[OtherPreviewUsers]
+    previewChildComments*: seq[IgPostPreviewChildComments]
+    otherPreviewUsers*: seq[IgPostOtherPreviewUsers]
     nextMaxChildCursor*: string
     hasMoreTailChildComments*: bool
     nextMinChildCursor*: string
@@ -48,14 +48,14 @@ type
     isRankedComment*: bool
     mediaId*: string
     commentIndex*: int64
-    user*: User2
+    user*: IgPostUser2
     text*: string
     isCovered*: bool
     privateReplyStatus*: int64
     inlineComposerDisplayCondition*: string
-  PreviewChildComments* = ref object
+  IgPostPreviewChildComments* = ref object
     contentType*: string
-    user*: User
+    user*: IgPostUser
     pk*: string
     text*: string
     `type`*: int64
@@ -71,7 +71,7 @@ type
     commentLikeCount*: int64
     commentHasAVisualReplyMedia*: bool
     # mediaInfo*: NilType
-  User* = ref object
+  IgPostUser* = ref object
     fbidV2*: string
     pk*: string
     pkId*: string
@@ -85,10 +85,10 @@ type
     profilePicId*: string
     profilePicUrl*: string
     # accountBadges*: seq[NilType]
-  OtherPreviewUsers* = ref object
+  IgPostOtherPreviewUsers* = ref object
     id*: string
     profilePicUrl*: string
-  User2* = ref object
+  IgPostUser2* = ref object
     pk*: string
     pkId*: string
     fullName*: string
@@ -101,7 +101,7 @@ type
     profilePicUrl*: string
     latestReelMedia*: int64
     latestBestiesReelMedia*: int64
-  Caption* = ref object
+  IgPostCaption* = ref object
     pk*: string
     userId*: string
     `type`*: int64
@@ -114,12 +114,12 @@ type
     shareEnabled*: bool
     isRankedComment*: bool
     mediaId*: string
-    user*: User3
+    user*: IgPostUser3
     text*: string
     isCovered*: bool
     privateReplyStatus*: int64
     isCreatedByMediaOwner*: bool
-  User3* = ref object
+  IgPostUser3* = ref object
     pk*: string
     pkId*: string
     fullName*: string
@@ -127,14 +127,14 @@ type
     fbidV2*: string
     username*: string
     isMentionable*: bool
-    fanClubStatusSyncInfo*: FanClubStatusSyncInfo
+    fanClubStatusSyncInfo*: IgPostFanClubStatusSyncInfo
     isVerified*: bool
     profilePicId*: string
     profilePicUrl*: string
-  FanClubStatusSyncInfo* = ref object
+  IgPostFanClubStatusSyncInfo* = ref object
     subscribed*: bool
     eligibleToSubscribe*: bool
-  PreviewComments* = ref object
+  IgPostIgPostPreviewComments* = ref object
     hasLikedComment*: bool
     commentLikeCount*: int64
     pk*: string
@@ -150,12 +150,12 @@ type
     isRankedComment*: bool
     mediaId*: string
     parentCommentId*: string
-    user*: User4
+    user*: IgPostUser4
     text*: string
     isCovered*: bool
     privateReplyStatus*: int64
     isCreatedByMediaOwner*: bool
-  User4* = ref object
+  IgPostUser4* = ref object
     pk*: string
     pkId*: string
     fullName*: string
@@ -168,5 +168,5 @@ type
     profilePicUrl*: string
     latestReelMedia*: int64
     latestBestiesReelMedia*: int64
-  QuickResponseEmojis* = ref object
+  IgPostQuickResponseEmojis* = ref object
     unicode*: string

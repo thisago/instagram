@@ -3,27 +3,27 @@
 from std/options import Option
 
 type
-  # NilType* = ref object
-  Response* = ref object
-    data*: Data
+  # IgUserNilType* = ref object
+  IgUserResponse* = ref object
+    data*: IgUserData
     status*: string
-  Data* = ref object
-    user*: User
-  User* = ref object
+  IgUserData = ref object
+    user*: IgUser
+  IgUser* = ref object
     biography*: string
-    bioLinks*: seq[BioLinks]
+    bioLinks*: seq[IgUserBioLinks]
     # fbProfileBiolink*: NilType
-    biographyWithEntities*: BiographyWithEntities
+    biographyWithEntities*: IgUserBiographyWithEntities
     blockedByViewer*: bool
     restrictedByViewer*: Option[bool]
     countryBlock*: bool
     eimuId*: string
     externalUrl*: string
     # externalUrlLinkshimmed*: string
-    edgeFollowedBy*: EdgeFollowedBy
+    edgeFollowedBy*: IgUserEdgeFollowedBy
     fbid*: string
     followedByViewer*: bool
-    edgeFollow*: EdgeFollow
+    edgeFollow*: IgUserEdgeFollow
     followsViewer*: bool
     fullName*: string
     # groupMetadata*: NilType
@@ -57,7 +57,7 @@ type
     isVerified*: bool
     isVerifiedByMv4b*: bool
     isRegulatedC18*: bool
-    edgeMutualFollowedBy*: EdgeMutualFollowedBy
+    edgeMutualFollowedBy*: IgUserEdgeMutualFollowedBy
     pinnedChannelsListCount*: int64
     profilePicUrl*: string
     profilePicUrlHd*: string
@@ -70,69 +70,69 @@ type
     username*: string
     connectedFbPage*: string # Not sure
     # pronouns*: seq[NilType]
-    edgeFelixVideoTimeline*: EdgeFelixVideoTimeline
-    edgeOwnerToTimelineMedia*: EdgeOwnerToTimelineMedia
-    edgeSavedMedia*: EdgeSavedMedia
-    edgeMediaCollections*: EdgeMediaCollections
-    edgeRelatedProfiles*: EdgeRelatedProfiles
-  BioLinks* = ref object
+    edgeFelixVideoTimeline*: IgUserEdgeFelixVideoTimeline
+    edgeOwnerToTimelineMedia*: IgUserEdgeOwnerToTimelineMedia
+    edgeSavedMedia*: IgUserEdgeSavedMedia
+    edgeMediaCollections*: IgUserEdgeMediaCollections
+    edgeRelatedProfiles*: IgUserEdgeRelatedProfiles
+  IgUserBioLinks* = ref object
     title*: string
     lynxUrl*: string
     url*: string
     linkType*: string
-  BiographyWithEntities* = ref object
+  IgUserBiographyWithEntities* = ref object
     rawText*: string
     # entities*: seq[NilType]
-  EdgeFollowedBy* = ref object
+  IgUserEdgeFollowedBy* = ref object
     count*: int64
-  EdgeFollow* = ref object
+  IgUserEdgeFollow* = ref object
     count*: int64
-  EdgeMutualFollowedBy* = ref object
+  IgUserEdgeMutualFollowedBy* = ref object
     count*: int64
     # edges*: seq[NilType]
-  EdgeFelixVideoTimeline* = ref object
+  IgUserEdgeFelixVideoTimeline* = ref object
     count*: int64
-    pageInfo*: PageInfo
-    edges*: seq[Edges] ## Posts
-  PageInfo* = ref object
+    pageInfo*: IgUserPageInfo
+    edges*: seq[IgUserEdges] ## Posts
+  IgUserPageInfo* = ref object
     hasNextPage*: bool
     endCursor*: string
-  Edges* = ref object
-    node*: Node
-  Node* = ref object
+  IgUserEdges* = ref object
+    node*: IgUserNode
+  IgUserNode* = ref object
     typename*: string
     id*: string
     shortcode*: string
-    dimensions*: Dimensions
+    dimensions*: IgUserDimensions
     displayUrl*: string
-    edgeMediaToTaggedUser*: EdgeMediaToTaggedUser
+    edgeMediaToTaggedUser*: IgUserEdgeMediaToTaggedUser
     # factCheckOverallRating*: NilType
     # factCheckInformation*: NilType
     # gatingInfo*: NilType
-    sharingFrictionInfo*: SharingFrictionInfo
+    sharingFrictionInfo*: IgUserSharingFrictionInfo
     # mediaOverlayInfo*: NilType
     mediaPreview*: string
-    owner*: Owner
+    owner*: IgUserOwner
     isVideo*: bool
     hasUpcomingEvent*: bool
     # accessibilityCaption*: NilType
-    dashInfo*: DashInfo
+    dashInfo*: IgUserDashInfo
     hasAudio*: bool
     trackingToken*: string
     videoUrl*: string
     videoViewCount*: int64
-    edgeMediaToCaption*: EdgeMediaToCaption
-    edgeMediaToComment*: EdgeMediaToComment
+    edgeMediaToCaption*: IgUserEdgeMediaToCaption
+    edgeMediaToComment*: IgUserEdgeMediaToComment
     commentsDisabled*: bool
     takenAtTimestamp*: int64
-    edgeLikedBy*: EdgeLikedBy
-    edgeMediaPreviewLike*: EdgeMediaPreviewLike
+    edgeLikedBy*: IgUserEdgeLikedBy
+    edgeMediaPreviewLike*: IgUserEdgeMediaPreviewLike
     # location*: NilType
     # nftAssetInfo*: NilType
     thumbnailSrc*: string
-    thumbnailResources*: seq[ThumbnailResources]
+    thumbnailResources*: seq[IgUserThumbnailResources]
     # felixProfileGridCrop*: NilType
-    coauthorProducers*: seq[CoauthorProducers]
+    coauthorProducers*: seq[IgUserCoauthorProducers]
     # pinnedForUsers*: seq[NilType]
     viewerCanReshare*: bool
     # encodingStatus*: NilType
@@ -140,182 +140,182 @@ type
     productType*: string
     title*: string
     videoDuration*: float64
-  Dimensions* = ref object
+  IgUserDimensions* = ref object
     height*: int64
     width*: int64
-  EdgeMediaToTaggedUser* = ref object
-    edges*: seq[Edges2]
-  Edges2* = ref object
-    node*: Node2
-  Node2* = ref object
-    user*: User2
+  IgUserEdgeMediaToTaggedUser* = ref object
+    edges*: seq[IgUserEdges2]
+  IgUserEdges2* = ref object
+    node*: IgUserNode2
+  IgUserNode2* = ref object
+    user*: IgUserUser2
     x*: float64
     y*: float64
-  User2* = ref object
+  IgUserUser2* = ref object
     fullName*: string
     followedByViewer*: bool
     id*: string
     isVerified*: bool
     profilePicUrl*: string
     username*: string
-  SharingFrictionInfo* = ref object
+  IgUserSharingFrictionInfo* = ref object
     shouldHaveSharingFriction*: bool
     # bloksAppUrl*: NilType
-  Owner* = ref object
+  IgUserOwner* = ref object
     id*: string
     username*: string
-  DashInfo* = ref object
+  IgUserDashInfo* = ref object
     isDashEligible*: bool
     # videoDashManifest*: NilType
     numberOfQualities*: int64
-  EdgeMediaToCaption* = ref object
-    edges*: seq[Edges3]
-  Edges3* = ref object
-    node*: Node3
-  Node3* = ref object
+  IgUserEdgeMediaToCaption* = ref object
+    edges*: seq[IgUserEdges3]
+  IgUserEdges3* = ref object
+    node*: IgUserNode3
+  IgUserNode3* = ref object
     text*: string
-  EdgeMediaToComment* = ref object
+  IgUserEdgeMediaToComment* = ref object
     count*: int64
-  EdgeLikedBy* = ref object
+  IgUserEdgeLikedBy* = ref object
     count*: int64
-  EdgeMediaPreviewLike* = ref object
+  IgUserEdgeMediaPreviewLike* = ref object
     count*: int64
-  ThumbnailResources* = ref object
+  IgUserThumbnailResources* = ref object
     src*: string
     configWidth*: int64
     configHeight*: int64
-  CoauthorProducers* = ref object
+  IgUserCoauthorProducers* = ref object
     id*: string
     isVerified*: bool
     profilePicUrl*: string
     username*: string
-  EdgeOwnerToTimelineMedia* = ref object
+  IgUserEdgeOwnerToTimelineMedia* = ref object
     count*: int64
-    pageInfo*: PageInfo2
-    edges*: seq[Edges4]
-  PageInfo2* = ref object
+    pageInfo*: IgUserPageInfo2
+    edges*: seq[IgUserEdges4]
+  IgUserPageInfo2* = ref object
     hasNextPage*: bool
     endCursor*: string
-  Edges4* = ref object
-    node*: Node4
-  Node4* = ref object
+  IgUserEdges4* = ref object
+    node*: IgUserNode4
+  IgUserNode4* = ref object
     typename*: string
     id*: string
     shortcode*: string
-    dimensions*: Dimensions2
+    dimensions*: IgUserDimensions2
     displayUrl*: string
-    edgeMediaToTaggedUser*: EdgeMediaToTaggedUser2
+    edgeMediaToTaggedUser*: IgUserEdgeMediaToTaggedUser2
     # factCheckOverallRating*: NilType
     # factCheckInformation*: NilType
     # gatingInfo*: NilType
-    sharingFrictionInfo*: SharingFrictionInfo2
+    sharingFrictionInfo*: IgUserSharingFrictionInfo2
     # mediaOverlayInfo*: NilType
     mediaPreview*: string
-    owner*: Owner2
+    owner*: IgUserOwner2
     isVideo*: bool
     hasUpcomingEvent*: bool
     accessibilityCaption*: string
-    edgeMediaToCaption*: EdgeMediaToCaption2
-    edgeMediaToComment*: EdgeMediaToComment2
+    edgeMediaToCaption*: IgUserEdgeMediaToCaption2
+    edgeMediaToComment*: IgUserEdgeMediaToComment2
     commentsDisabled*: bool
     takenAtTimestamp*: int64
-    edgeLikedBy*: EdgeLikedBy2
-    edgeMediaPreviewLike*: EdgeMediaPreviewLike2
+    edgeLikedBy*: IgUserEdgeLikedBy2
+    edgeMediaPreviewLike*: IgUserEdgeMediaPreviewLike2
     # location*: NilType
     # nftAssetInfo*: NilType
     thumbnailSrc*: string
-    thumbnailResources*: seq[ThumbnailResources2]
-    coauthorProducers*: seq[CoauthorProducers2]
-    pinnedForUsers*: seq[PinnedForUsers]
+    thumbnailResources*: seq[IgUserThumbnailResources2]
+    coauthorProducers*: seq[IgUserCoauthorProducers2]
+    pinnedForUsers*: seq[IgUserPinnedForUsers]
     viewerCanReshare*: bool
-    edgeSidecarToChildren*: EdgeSidecarToChildren
-  Dimensions2* = ref object
+    edgeSidecarToChildren*: IgUserEdgeSidecarToChildren
+  IgUserDimensions2* = ref object
     height*: int64
     width*: int64
-  EdgeMediaToTaggedUser2* = ref object
-    edges*: seq[Edges5]
-  Edges5* = ref object
-    node*: Node2
-  SharingFrictionInfo2* = ref object
+  IgUserEdgeMediaToTaggedUser2* = ref object
+    edges*: seq[IgUserEdges5]
+  IgUserEdges5* = ref object
+    node*: IgUserNode2
+  IgUserSharingFrictionInfo2* = ref object
     shouldHaveSharingFriction*: bool
     # bloksAppUrl*: NilType
-  Owner2* = ref object
+  IgUserOwner2* = ref object
     id*: string
     username*: string
-  EdgeMediaToCaption2* = ref object  
-    edges*: seq[Edges5]
-  Node5* = ref object
+  IgUserEdgeMediaToCaption2* = ref object
+    edges*: seq[IgUserEdges5]
+  IgUserNode5* = ref object
     text*: string
-  EdgeMediaToComment2* = ref object
+  IgUserEdgeMediaToComment2* = ref object
     count*: int64
-  EdgeLikedBy2* = ref object
+  IgUserEdgeLikedBy2* = ref object
     count*: int64
-  EdgeMediaPreviewLike2* = ref object
+  IgUserEdgeMediaPreviewLike2* = ref object
     count*: int64
-  CoauthorProducers2* = ref object
+  IgUserCoauthorProducers2* = ref object
     id*: string
     isVerified*: bool
     profilePicUrl*: string
     username*: string
-  EdgeSidecarToChildren* = ref object
-    edges*: seq[Edges7]
-  Edges7* = ref object
-    node*: Node7
-  Node7* = ref object
+  IgUserEdgeSidecarToChildren* = ref object
+    edges*: seq[IgUserEdges7]
+  IgUserEdges7* = ref object
+    node*: IgUserNode7
+  IgUserNode7* = ref object
     typename*: string
     id*: string
     shortcode*: string
-    dimensions*: Dimensions3
+    dimensions*: IgUserDimensions3
     displayUrl*: string
-    edgeMediaToTaggedUser*: EdgeMediaToTaggedUser3
+    edgeMediaToTaggedUser*: IgUserEdgeMediaToTaggedUser3
     # factCheckOverallRating*: NilType
     # factCheckInformation*: NilType
     # gatingInfo*: NilType
-    sharingFrictionInfo*: SharingFrictionInfo3
+    sharingFrictionInfo*: IgUserSharingFrictionInfo3
     # mediaOverlayInfo*: NilType
     mediaPreview*: string
-    owner*: Owner2
+    owner*: IgUserOwner2
     isVideo*: bool
     hasUpcomingEvent*: bool
     accessibilityCaption*: string
-  SharingFrictionInfo3* = ref object
+  IgUserSharingFrictionInfo3* = ref object
     shouldHaveSharingFriction*: bool
     # bloksAppUrl*: NilType
-  Dimensions3* = ref object
+  IgUserDimensions3* = ref object
     height*: int64
     width*: int64
-  EdgeMediaToTaggedUser3* = ref object
-    edges*: seq[Edges2]
-  Edges8* = ref object
-    node*: Node5
-  ThumbnailResources2* = ref object
+  IgUserEdgeMediaToTaggedUser3* = ref object
+    edges*: seq[IgUserEdges2]
+  IgUserEdges8* = ref object
+    node*: IgUserNode5
+  IgUserThumbnailResources2* = ref object
     src*: string
     configWidth*: int64
     configHeight*: int64
-  PinnedForUsers* = ref object
+  IgUserPinnedForUsers* = ref object
     id*: string
     isVerified*: bool
     profilePicUrl*: string
     username*: string
-  EdgeSavedMedia* = ref object
+  IgUserEdgeSavedMedia* = ref object
     count*: int64
-    pageInfo*: PageInfo3
+    pageInfo*: IgUserPageInfo3
     # edges*: seq[NilType]
-  PageInfo3* = ref object
+  IgUserPageInfo3* = ref object
     hasNextPage*: bool
     # endCursor*: NilType
-  EdgeMediaCollections* = ref object
+  IgUserEdgeMediaCollections* = ref object
     count*: int64
-    pageInfo*: PageInfo4
+    pageInfo*: IgUserPageInfo4
     # edges*: seq[NilType]
-  PageInfo4* = ref object
+  IgUserPageInfo4* = ref object
     hasNextPage*: bool
     # endCursor*: NilType
-  EdgeRelatedProfiles* = ref object
-    edges*: seq[Edges6]
-  Edges6* = ref object
-    node*: Node6
-  Node6* = ref object
+  IgUserEdgeRelatedProfiles* = ref object
+    edges*: seq[IgUserEdges6]
+  IgUserEdges6* = ref object
+    node*: IgUserNode6
+  IgUserNode6* = ref object
     id*: string
     fullName*: string
     isPrivate*: bool

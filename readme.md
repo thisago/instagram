@@ -20,6 +20,10 @@ The following internal endpoints are implemented:
 - `api/v1/media/{postId}/comments`: All data used to render the post
 - `api/v1/friendships/{userId}/followers`: User followers, given by pages
 
+## TODO
+
+- [ ] Add more pages getting to post comments
+
 ## License
 
 This library is licensed over MIT license!

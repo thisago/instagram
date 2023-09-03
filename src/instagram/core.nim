@@ -38,6 +38,8 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   result.cookies = cookies
   await setupCodes result
 
+# Don't export as library procs
+
 proc get*(ig; endpoint: string): Future[string] {.async.} =
   ## Requests to Instagram internal api
   let
