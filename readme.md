@@ -26,10 +26,40 @@ The following internal endpoints are implemented:
 
 \* **`Ig`** is a Instagram object
 
+## Usage
+
+> **Warning**
+> This implementation violates the Instagram's terms of use, to prevent bans,
+> call the API with random delays to looks like a human.
+
+**Let's start with the usage guide**
+
+### Getting data
+
+To use the lib, you'll need a `Instagram` object instance, it stores your
+authentication cookies, the CSRF cookie and extra IDs
+
+To create one:
+
+```nim
+import std/asyncdispatch
+
+let ig = waitFor newInstagram() # No cookies, there's rate limit
+# or
+let loggedIg = waitFor newInstagram "YOUR COOKIES" # With login
+```
+
+To get cookies, consider using [iecook](https://github.com/thisagp/iecook) because it gets the HttpOnly cookies, the needed ones. automatically.
+
+**[...]**
+
 ## TODO
 
 - [ ] Get post comments
 - [ ] Like a post
+- [ ] Comment in a post
+- [ ] Add new post
+- [ ] Add new status
 - [ ] (Un)Follow a user
 
 ## License

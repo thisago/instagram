@@ -1,4 +1,5 @@
 import std/asyncdispatch
+from std/httpcore import HttpGet, HttpPost
 
 import pkg/jsony
 
@@ -10,7 +11,7 @@ export user except IgUserResponse
 proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   ## Gets instagram user from their internal API
   let
-    json = await ig.get endpoint("users/web_profile_info/?username=$#", username)
+    json = await ig.request(HttpGet, endpoint("users/web_profile_info/?username=$#", username))
     resp = json.fromJson IgUserResponse
   result = resp.data.user
   result.status = resp.status
@@ -31,9 +32,9 @@ proc followers*(
   when nextMaxId is IgFollowersAndFollowing:
     let nextMaxId = nextMaxId.nextMaxId
 
-  let json = await ig.get endpoint("friendships/$#/followers/?count=$#&max_id=$#&search_surface=follow_list_page",
+  let json = await ig.request(HttpGet, endpoint("friendships/$#/followers/?count=$#&max_id=$#&search_surface=follow_list_page",
                                    userId, $limit,
-                                   if nextMaxId.len > 0: nextMaxId else: $limit)
+                                   if nextMaxId.len > 0: nextMaxId else: $limit))
   result = json.fromJson IgFollowersAndFollowing
 
 proc following*(
@@ -48,9 +49,9 @@ proc following*(
   when nextMaxId is IgFollowersAndFollowing:
     let nextMaxId = nextMaxId.nextMaxId
 
-  let json = await ig.get endpoint("friendships/$#/following/?count=$#&max_id=$#&search_surface=follow_list_page",
+  let json = await ig.request(HttpGet, endpoint("friendships/$#/following/?count=$#&max_id=$#&search_surface=follow_list_page",
                                    userId, $limit,
-                                   if nextMaxId.len > 0: nextMaxId else: $limit)
+                                   if nextMaxId.len > 0: nextMaxId else: $limit))
   result = json.fromJson IgFollowersAndFollowing
 
 import instagram/api/types/post
@@ -58,7 +59,7 @@ export post
 
 proc post*(ig: Instagram; postId: string): Future[IgPost] {.async.} =
   ## Gets instagram user from their internal API
-  let json = await ig.get endpoint("media/$#/comments/?can_support_threading=true&permalink_enabled=false", postId)
+  let json = await ig.request(HttpGet, endpoint("media/$#/comments/?can_support_threading=true&permalink_enabled=false", postId))
   result = json.fromJson IgPost
 
 import instagram/api/types/feed
@@ -75,6 +76,6 @@ proc feed*(
     let userId = userId.id
   when nextMaxId is IgFeed:
     let nextMaxId = nextMaxId.nextMaxId
-  let json = await ig.get endpoint("feed/user/$#/?count=$#&max_id=$#", userId,
-                                   limit, nextMaxId)
+  let json = await ig.request(HttpGet, endpoint("feed/user/$#/?count=$#&max_id=$#", userId,
+                                   limit, nextMaxId))
   result = json.fromJson IgFeed

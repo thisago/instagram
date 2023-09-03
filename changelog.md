@@ -12,6 +12,9 @@
 - Cleaning
 - Added CSRF token bypass!
 - Added `following` extraction
+- Added post request support
+- Added CSRF token in cookies too
+- Added exception raising
 
 ## Version 0.1.0 (2023/09/01)
 

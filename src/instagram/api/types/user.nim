@@ -11,8 +11,6 @@ type
   IgUserData = ref object
     user*: IgUser
   IgUser* = ref object
-    status*: string
-    message*: string ## Error message
     biography*: string
     bioLinks*: seq[IgUserBioLinks]
     # fbProfileBiolink*: NilType
@@ -71,13 +69,15 @@ type
     # transparencyLabel*: NilType
     transparencyProduct*: string
     username*: string
-    connectedFbPage*: string # Not sure
+    # connectedFbPage*: NilType
     # pronouns*: seq[NilType]
     edgeFelixVideoTimeline*: IgUserEdgeFelixVideoTimeline
     edgeOwnerToTimelineMedia*: IgUserEdgeOwnerToTimelineMedia
     edgeSavedMedia*: IgUserEdgeSavedMedia
     edgeMediaCollections*: IgUserEdgeMediaCollections
     edgeRelatedProfiles*: IgUserEdgeRelatedProfiles
+    status*: string
+    message*: string ## Error message
   IgUserBioLinks* = ref object
     title*: string
     lynxUrl*: string

@@ -1,20 +1,19 @@
-# @prompt cookies
+# @promptw cookies
+# @promptw csrf
 POST https://www.instagram.com/api/v1/friendships/create/524549267/ HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate, br
-X-CSRFToken: 3cIePvDySnXXdzNoexgDWtQVIcNkc8sH
-X-Instagram-AJAX: 1008425594
+X-CSRFToken: fajZe2IoaDMG7mXXMhtc9A3ygNHvrTjv
+X-Instagram-AJAX: 1008426814
 X-IG-App-ID: 936619743392459
 X-ASBD-ID: 129477
-X-IG-WWW-Claim: hmac.AR1VunAyefbEeioT8cWXQ65fu8ouE8qye9oE6tv78FHjGJST
 Content-Type: application/x-www-form-urlencoded
 X-Requested-With: XMLHttpRequest
 Origin: https://www.instagram.com
 DNT: 1
 Connection: keep-alive
 Referer: https://www.instagram.com/microsoft/
-Cookie: {{cookies}}
+Cookie: datr=vMfvZOyQp-peydq3hmYZd7p2;mid=ZO_HvQALAAHxdZ7WeOy6dZLNwNBY;ig_nrcb=1;ig_did=35C6287C-D019-4CC8-B614-B73BD483EF45;shbid="11202\05460074378304\0541725306400:01f7c8e5199f4649812afdda830fbb62760a7e00458c355de97010d6c821efa19cc32c20";shbts="1693770400\05460074378304\0541725306400:01f7927e10e19716b82ad48a67e43acac0234b31677622ee449445ff33ed3ce00e5887f9";sessionid=60074378304%3AC18kZGf2cnKcv8%3A26%3AAYdX7WIguApGw0N-zZgD15UsLKWp_Z7hKyRvNqIEGQ;rur="VLL\05460074378304\0541725308236:01f7e311f1aecd61e2580847663f3289606ccbd325d9653b4cf10c5d6633ef886d12a3b1";ds_user_id=60074378304
 
 container_module=profile&nav_chain=PolarisProfileRoot%3AprofilePage%3A1%3Avia_cold_start&user_id=524549267
+
+# curl 'https://www.instagram.com/api/v1/friendships/create/524549267/' --compressed -X POST -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br' -H 'X-CSRFToken: JFP8p9QCHyNlttDo11awC0th9gY68u37' -H 'X-Instagram-AJAX: 1008426814' -H 'X-IG-App-ID: 936619743392459' -H 'X-ASBD-ID: 129477' -H 'X-IG-WWW-Claim: hmac.AR1VunAyefbEeioT8cWXQ65fu8ouE8qye9oE6tv78FHjGNhV' -H 'Content-Type: application/x-www-form-urlencoded' -H 'X-Requested-With: XMLHttpRequest' -H 'Origin: https://www.instagram.com' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Referer: https://www.instagram.com/microsoft/' -H 'Cookie: ig_did=35C6287C-D019-4CC8-B614-B73BD483EF45; datr=vMfvZOyQp-peydq3hmYZd7p2; csrftoken=JFP8p9QCHyNlttDo11awC0th9gY68u37; mid=ZO_HvQALAAHxdZ7WeOy6dZLNwNBY; ig_nrcb=1; ds_user_id=60074378304; shbid="11202\05460074378304\0541725306400:01f7c8e5199f4649812afdda830fbb62760a7e00458c355de97010d6c821efa19cc32c20"; shbts="1693770400\05460074378304\0541725306400:01f7927e10e19716b82ad48a67e43acac0234b31677622ee449445ff33ed3ce00e5887f9"; sessionid=60074378304%3Axgr4ks9I9q1sTM%3A5%3AAYf9F2pTz7hGKMTQhi-Dy5PvtfAqv4A6K17dLNGd_w; rur="VLL\05460074378304\0541725306882:01f7a1d35cf065084f3aadd542925c32b96b7855e065438f46573e9d951b5462ac82e1e8"' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-GPC: 1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' --data-raw 'container_module=profile&nav_chain=PolarisProfileRoot%3AprofilePage%3A1%3Avia_cold_start&user_id=524549267'

@@ -1,14 +1,19 @@
 import std/asyncdispatch
 from std/uri import parseUri, `$`
-from std/strutils import `%`
+from std/strutils import `%`, contains
+from std/json import parseJson, `{}`, getStr
 
 import pkg/unifetch
 from pkg/util/forStr import between
 
 type
-  InstagramTooManyRequests* = ref object of IOError
+  IgTooManyRequests* = object of IOError
     ## Rate limit exceeded, provide the cookies
     ## TODO: Implement
+  IgMissingCsrf* = object of IOError
+    ## The request depends on CSRF Token, but it's not present
+  IgException* = object of IOError
+    ## Unidentified error occurred
 
 type
   Instagram* = ref object
@@ -23,9 +28,11 @@ const
 using
   ig: Instagram
 
-proc setupCodes(ig) {.async.} =
+proc prepare*(ig) {.async.} =
   ## Adds to the provided mutable Instagram instance the required codes for API
   ## request extracted from a Instagram page
+  ##
+  ## Need to run when `IgMissingCsrf` is raised
   let
     uni = newUniClient()
     req = await uni.get instagramUrl
@@ -39,10 +46,15 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   ## Creates new Instagram instance
   new result
   result.cookies = cookies
-  await setupCodes result
+  if cookies.len > 0:
+    if cookies[^1] != ';':
+      result.cookies.add ";"
+    result.cookies.add "csrftoken="
 
-# Don't export as library procs
-proc get*(ig; endpoint: string): Future[string] {.async.} =
+  await prepare result
+
+# Internal proc
+proc request*(ig; httpMethod: HttpMethod; endpoint: string): Future[string] {.async.} =
   ## Requests to Instagram internal api
   let
     uni = newUniClient(headers = newHttpHeaders({
@@ -51,18 +63,26 @@ proc get*(ig; endpoint: string): Future[string] {.async.} =
       "X-Requested-With": "XMLHttpRequest",
       "Alt-Used": instagramUrl.hostname,
       "Referer": $instagramUrl,
-      "Cookie": ig.cookies
+      "Cookie": ig.cookies & ig.csrfToken
     }))
-    req = await uni.get apiUrl / endpoint
+    req = await uni.request(apiUrl / endpoint, httpMethod, multipart = nil)
   close uni
 
   result = req.body
+
+  if "status\":\"fail" in req.body:
+    let error = req.body.parseJson{"message"}.getStr
+    case error:
+    of "CSRF token missing or incorrect":
+      raise newException(IgMissingCsrf, error)
+    else:
+      raise newException(IgException, error)
   # writeFile("out.json", req.body)
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args
 
 when isMainModule:
-  const cookies = staticRead "../../developmentcookies.txt"
-  let ig = waitFor newInstagram cookies
+  # const cookies = staticRead "../../developmentcookies.txt"
+  let ig = waitFor newInstagram ""
   echo ig[]
