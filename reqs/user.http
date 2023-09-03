@@ -13,11 +13,11 @@ Alt-Used: www.instagram.com
 Referer: https://www.instagram.com/
 
 ###
-
+# @prompt cookies
 GET https://www.instagram.com/api/v1/users/web_profile_info/?username=hak5gear HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Alt-Used: www.instagram.com
 Referer: https://www.instagram.com/
-Cookie: ig_did=35C6287C-D019-4CC8-B614-B73BD483EF45; datr=vMfvZOyQp-peydq3hmYZd7p2; mid=ZO_HvQALAAHxdZ7WeOy6dZLNwNBY; ig_nrcb=1; rur="VLL\05460074378304\0541724971916:01f7bac1ea0ae8639318e2343b34f98e2aec2b9dd9e6715c6a5bddd901bb6f0014345c5c"; ds_user_id=60074378304; sessionid=60074378304%3AKS7UAG6JqMWMLq%3A19%3AAYeqmIzqMuEGbXALb9BgVFKW_jQApg1kMIBbRzfU6A; shbid="11202\05460074378304\0541724971853:01f74529bf198ac2119513c70e8ce284ba49f55e729a1b985f2df32ada4a90b5ff42465f"; shbts="1693435853\05460074378304\0541724971853:01f7a7a35fa3e3ac73770c806e562be10420e57262768d105303f1a3fa6e85f43bd91518"
+Cookie: {{cookies}}

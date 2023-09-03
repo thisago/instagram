@@ -1,24 +1,25 @@
+# @prompt cookies
 GET https://www.instagram.com/api/v1/friendships/6167669892/followers/?count=12&search_surface=follow_list_page HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Referer: https://www.instagram.com/hak5gear/followers/
-Cookie: 
+Cookie: {{cookies}}
 
 ###
-
+# @prompt cookies
 GET https://www.instagram.com/api/v1/friendships/6167669892/followers/?count=12&max_id=QVFDVEJWQ0JtZjBTdGJmalRIM3YxTVRGalBTaVd1RDZ0LW1YX0hucV9uVWhkRXRPRHYwUFR3dEhNYUJ5d3pDd3hKdGQwSDlmRGdoaHlvRHpXcEVXa045OQ%3D%3D&search_surface=follow_list_page HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Referer: https://www.instagram.com/hak5gear/followers/
-Cookie: 
+Cookie: {{cookies}}
 
 ###
-
-GET https://www.instagram.com/api/v1/friendships/6167669892/followers/?count=12&search_surface=follow_list_page HTTP/1.1
+# @prompt cookies
+GET https://www.instagram.com/api/v1/friendships/55275407132/followers/?count=12&search_surface=follow_list_page HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Referer: https://www.instagram.com/hak5gear/followers/
-Cookie: 
+Cookie: {{cookies}}

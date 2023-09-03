@@ -1,6 +1,7 @@
+# @prompt cookies
 GET https://www.instagram.com/api/v1/media/3175699152650296287/comments/?can_support_threading=true&permalink_enabled=false HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Referer: https://www.instagram.com/p/CwSWY3DOtvf/
-Cookie: ig_did=35C6287C-D019-4CC8-B614-B73BD483EF45; datr=vMfvZOyQp-peydq3hmYZd7p2; csrftoken=zAhWgQBFFovh1Ja0ocKMHqB1NImhFcnp; mid=ZO_HvQALAAHxdZ7WeOy6dZLNwNBY; ig_nrcb=1; ds_user_id=60074378304; sessionid=60074378304%3AKS7UAG6JqMWMLq%3A19%3AAYfelkcwjtqt3W7HSi4_ODs38cLdF5pxBjNN5q-AEA; shbid="11202\05460074378304\0541724971853:01f74529bf198ac2119513c70e8ce284ba49f55e729a1b985f2df32ada4a90b5ff42465f"; shbts="1693435853\05460074378304\0541724971853:01f7a7a35fa3e3ac73770c806e562be10420e57262768d105303f1a3fa6e85f43bd91518"; rur="VLL\05460074378304\0541725129940:01f7c1f878bc6fefb0b381c913551beac7ef896bc5832cd23cbeba83d3864004ee4f7e49"
+Cookie: {{cookies}}
