@@ -13,6 +13,7 @@ type
 type
   Instagram* = ref object
     appId: string ## X-IG-App-ID
+    csrfToken: string ## X-CSRFToken
     cookies*: string ## Optional, but without authentication there's a rate limit
 
 const
@@ -32,6 +33,7 @@ proc setupCodes(ig) {.async.} =
   close uni
 
   ig.appId = body.between("X-IG-App-ID\":\"", "\"")
+  ig.csrfToken = body.between("\\\"csrf_token\\\":\\\"", "\\\"")
 
 proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   ## Creates new Instagram instance
@@ -45,6 +47,7 @@ proc get*(ig; endpoint: string): Future[string] {.async.} =
   let
     uni = newUniClient(headers = newHttpHeaders({
       "X-IG-App-ID": ig.appId,
+      "X-CSRFToken": ig.csrfToken,
       "X-Requested-With": "XMLHttpRequest",
       "Alt-Used": instagramUrl.hostname,
       "Referer": $instagramUrl,
@@ -58,3 +61,8 @@ proc get*(ig; endpoint: string): Future[string] {.async.} =
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args
+
+when isMainModule:
+  const cookies = staticRead "../../developmentcookies.txt"
+  let ig = waitFor newInstagram cookies
+  echo ig[]
