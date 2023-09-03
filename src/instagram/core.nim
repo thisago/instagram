@@ -58,9 +58,10 @@ func endpoint*(path: string; args: varargs[string, `$`]): string =
 
 when isMainModule:
   import std/json
-  
-  let ig = waitFor newInstagram()
+
+  const cookies = staticRead "../../developmentcookies.txt"
+  let ig = waitFor newInstagram cookies
   # let data = waitFor ig.get "media/3140623659379585160/comments/?can_support_threading=true&permalink_enabled=false"
   # let data = waitFor ig.get "users/web_profile_info/?username=microsoft"
-  let data = waitFor ig.get "https://www.instagram.com/api/v1/friendships/6167669892/followers/?count=12&search_surface=follow_list_page"
+  let data = waitFor ig.get "friendships/57011964897/followers/?count=12&search_surface=follow_list_page"
   echo data

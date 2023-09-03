@@ -2,7 +2,7 @@
 
 # Instagram
 
-#### Instagram data, in a instant 
+#### Instagram data, in a instant
 
 **[About](#about) - [Features](#features)** - [License](#license)
 
@@ -18,6 +18,7 @@ The following internal endpoints are implemented:
 
 - `users/web_profile_info`: Gets all info used to render the user page
 - `media/{postId}/comments`: All data used to render the post
+- `friendships/{userId}/followers`: User followers, given by pages
 
 ## License
 

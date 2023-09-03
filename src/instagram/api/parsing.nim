@@ -1,3 +1,5 @@
+from std/json import JNull, JsonNode, getBool
+
 import instagram/api/types/user
 
 proc renameHook*(v: var User; fieldName: var string) =

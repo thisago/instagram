@@ -11,8 +11,11 @@ export media
 when isMainModule:
   import json
   import asyncdispatch
-  let ig = waitFor newInstagram()
-  # let user = waitFor ig.user "microsoft"
-  let user = waitFor ig.post "3140623659379585160"
-  
-  echo pretty %*user
+  const cookies = staticRead "../developmentcookies.txt"
+  let ig = waitFor newInstagram cookies
+  # let user = waitFor ig.user "olobocacador"
+  # let user = waitFor ig.post "3140623659379585160"
+  let followers = waitFor ig.followers "57011964897"
+
+  echo pretty %*followers
+  echo pretty %*waitFor ig.followers("57011964897", followers)
