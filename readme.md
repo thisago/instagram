@@ -16,9 +16,9 @@ This library is a implementation of internal Instagram web API.
 
 The following internal endpoints are implemented:
 
-- `users/web_profile_info`: Gets all info used to render the user page
-- `media/{postId}/comments`: All data used to render the post
-- `friendships/{userId}/followers`: User followers, given by pages
+- `api/v1/users/web_profile_info`: Gets all info used to render the user page
+- `api/v1/media/{postId}/comments`: All data used to render the post
+- `api/v1/friendships/{userId}/followers`: User followers, given by pages
 
 ## License
 
