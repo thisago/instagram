@@ -20,7 +20,8 @@ The following internal endpoints are implemented:
 
 - **`ig.user("username")`** <sup>(`/api/v1/users/web_profile_info`)</sup>: Gets all info used to render the user page
 - **`ig.post("postId")`** <sup>(`/api/v1/media/{postId}/comments`)</sup>: All data used to render the post
-- **`ig.followers("userId")`** <sup>(`/api/v1/friendships/{userId}/followers`)</sup>: User followers, given by pages
+- **`ig.followers("userId")`** <sup>(`/api/v1/friendships/{userId}/followers`)</sup>: User followers
+- **`ig.following("userId")`** <sup>(`/api/v1/friendships/{userId}/following`)</sup>: User following
 - **`ig.feed("userId")`** <sup>(`/api/v1/feed/user/{userId}`)</sup>: Feed data, posts
 
 \* **`Ig`** is a Instagram object
