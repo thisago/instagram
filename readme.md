@@ -51,7 +51,7 @@ To create one:
 ```nim
 import std/asyncdispatch
 
-let ig = waitFor newInstagram() # No cookies, there's rate limit
+let ig = waitFor newInstagram() # No cookies, there's rate limit and limited just to GET functions
 # or
 let loggedIg = waitFor newInstagram "YOUR COOKIES" # With login
 ```
