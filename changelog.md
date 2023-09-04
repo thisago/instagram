@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.3.0 (2023/09/04)
+
+- Added first POST actions!
+  - Added `follow` action
+  - Added `unfollow` action!
+
 ## Version 0.2.0 (2023/09/03)
 
 - Fixed user type
@@ -24,3 +30,4 @@
 - Added user API endpoint
 - Fixed user types
 - Added media API endpoint
+!

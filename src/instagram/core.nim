@@ -12,8 +12,10 @@ type
     ## TODO: Implement
   IgMissingCsrf* = object of IOError
     ## The request depends on CSRF Token, but it's not present
+  IgAuthRequired* = object of IOError
+    ## The request cannot be done without authentication cookies
   IgException* = object of IOError
-    ## Unidentified error occurred
+    ## Generic error occurred
 
 type
   Instagram* = ref object
@@ -54,18 +56,22 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   await prepare result
 
 # Internal proc
-proc request*(ig; httpMethod: HttpMethod; endpoint: string): Future[string] {.async.} =
+proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[string] {.async.} =
   ## Requests to Instagram internal api
+  if httpMethod == HttpPost and ig.cookies.len < 100:
+    raise newException(IgAuthRequired, "In order to proceed, provide your Instagram cookies to `newInstagram` procedure.")
   let
     uni = newUniClient(headers = newHttpHeaders({
       "X-IG-App-ID": ig.appId,
       "X-CSRFToken": ig.csrfToken,
       "X-Requested-With": "XMLHttpRequest",
       "Alt-Used": instagramUrl.hostname,
+      "Origin": $instagramUrl,
       "Referer": $instagramUrl,
+      "Content-Type": "application/x-www-form-urlencoded",
       "Cookie": ig.cookies & ig.csrfToken
     }))
-    req = await uni.request(apiUrl / endpoint, httpMethod, multipart = nil)
+    req = await uni.request(apiUrl / endpoint, httpMethod, body, nil)
   close uni
 
   result = req.body
@@ -74,15 +80,19 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string): Future[string] {.as
     let error = req.body.parseJson{"message"}.getStr
     case error:
     of "CSRF token missing or incorrect":
-      raise newException(IgMissingCsrf, error)
+      raise newException(IgMissingCsrf, error & " Raw:\l" & req.body)
     else:
-      raise newException(IgException, error)
-  # writeFile("out.json", req.body)
+      raise newException(IgException, error & " Raw:\l" & req.body)
+  elif req.body.len == 0:
+    raise newException(IgException, "Instagram sent a blank response. Raw:\l" & req.body)
+
+  writeFile("out.json", req.body)
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args
 
 when isMainModule:
-  # const cookies = staticRead "../../developmentcookies.txt"
-  let ig = waitFor newInstagram ""
-  echo ig[]
+  const cookies = staticRead "../../developmentcookies.txt"
+  # let ig = waitFor newInstagram ""
+  let ig = waitFor newInstagram cookies
+  echo waitFor ig.request(HttpPost, "friendships/create/524549267")

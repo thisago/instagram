@@ -18,11 +18,18 @@ With this library, you can get data and even interact with Instagram!
 
 The following internal endpoints are implemented:
 
+### GET
+
 - **`ig.user("username")`** <sup>(`/api/v1/users/web_profile_info`)</sup>: Gets all info used to render the user page
 - **`ig.post("postId")`** <sup>(`/api/v1/media/{postId}/comments`)</sup>: All data used to render the post
 - **`ig.followers("userId")`** <sup>(`/api/v1/friendships/{userId}/followers`)</sup>: User followers
 - **`ig.following("userId")`** <sup>(`/api/v1/friendships/{userId}/following`)</sup>: User following
 - **`ig.feed("userId")`** <sup>(`/api/v1/feed/user/{userId}`)</sup>: Feed data, posts
+
+### POST
+
+- **`ig.follow("userId")`** <sup>(`friendships/create/{userId}`)</sup>: Follows the user
+- **`ig.unfollow("userId")`** <sup>(`friendships/destroy/{userId}`)</sup>: Unfollows the user
 
 \* **`Ig`** is a Instagram object
 
