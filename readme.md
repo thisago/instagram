@@ -38,7 +38,7 @@ The following internal endpoints are implemented:
 ## Usage
 
 > **Warning**
-> This implementation violates the Instagram's terms of use, to prevent bans,
+> This implementation may violate the Instagram's terms of use, to prevent bans,
 > call the API with random delays to looks like a human.
 
 **Let's start with the usage guide**
