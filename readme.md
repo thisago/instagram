@@ -33,7 +33,7 @@ The following internal endpoints are implemented:
 - **`ig.like("userId")`** <sup>(`/api/v1/web/likes/{postId}/like`)</sup>: Likes the post
 - **`ig.unlike("userId")`** <sup>(`/api/v1/web/likes/{postId}/unlike`)</sup>: Remove the like of post
 
-\* **`Ig`** is a Instagram object
+\* **`Ig`** is a `Instagram` object
 
 ## Usage
 
