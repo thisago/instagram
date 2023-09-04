@@ -67,7 +67,9 @@ To get cookies, consider using [iecook](https://github.com/thisago/iecook) becau
 - [ ] Comment in a post
 - [ ] Add new post
 - [ ] Add new status
-- [ ] (Un)Follow a user
+- [x] (Un)Follow a user
+- [ ] Get your following state of a user
+
 
 ## License
 
