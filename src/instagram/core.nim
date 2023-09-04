@@ -77,7 +77,7 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[s
 
   result = req.body
 
-  writeFile("out.json", req.body)
+  # writeFile("out.json", req.body)
 
   if "status\":\"fail" in req.body:
     try:
