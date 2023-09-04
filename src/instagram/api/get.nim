@@ -8,7 +8,6 @@ import pkg/jsony
 import instagram/core
 
 import instagram/api/types/user
-export user except IgUserResponse
 
 proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   ## Gets instagram user from their internal API
@@ -20,7 +19,6 @@ proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   result.message = resp.message
 
 import instagram/api/types/followersAndFollowing
-export followersAndFollowing
 
 proc followers*(
   ig: Instagram;
@@ -57,7 +55,6 @@ proc following*(
   result = json.fromJson IgFollowersAndFollowing
 
 import instagram/api/types/post
-export post
 
 proc post*(ig: Instagram; postId: string): Future[IgPost] {.async.} =
   ## Gets instagram user from their internal API
@@ -65,7 +62,6 @@ proc post*(ig: Instagram; postId: string): Future[IgPost] {.async.} =
   result = json.fromJson IgPost
 
 import instagram/api/types/feed
-export feed
 
 proc feed*(
   ig: Instagram;

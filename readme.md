@@ -28,8 +28,10 @@ The following internal endpoints are implemented:
 
 ### POST
 
-- **`ig.follow("userId")`** <sup>(`friendships/create/{userId}`)</sup>: Follows the user
-- **`ig.unfollow("userId")`** <sup>(`friendships/destroy/{userId}`)</sup>: Unfollows the user
+- **`ig.follow("userId")`** <sup>(`/api/v1/friendships/create/{userId}`)</sup>: Follows the user
+- **`ig.unfollow("userId")`** <sup>(`/api/v1/friendships/destroy/{userId}`)</sup>: Unfollows the user
+- **`ig.like("userId")`** <sup>(`/api/v1/web/likes/{postId}/like`)</sup>: Likes the post
+- **`ig.unlike("userId")`** <sup>(`/api/v1/web/likes/{postId}/unlike`)</sup>: Remove the like of post
 
 \* **`Ig`** is a Instagram object
 

@@ -5,6 +5,8 @@
 - Added first POST actions!
   - Added `follow` action
   - Added `unfollow` action!
+  - Added `like` action
+  - Added `unlike` action
 
 ## Version 0.2.0 (2023/09/03)
 
