@@ -40,3 +40,6 @@ type
   IgFollowersIsPossibleImpersonatorThreads* = ref object
     isUnconnectedImpersonator*: bool
     # connectedSimilarUserId*: NilType
+
+func id*(user: IgFollowersUser): string =
+  if user.pk.len > 0: user.pk else: user.pkId

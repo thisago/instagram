@@ -1,7 +1,7 @@
 import std/asyncdispatch
 from std/uri import parseUri, `$`
 from std/strutils import `%`, contains
-from std/json import parseJson, `{}`, getStr
+from std/json import parseJson, `{}`, getStr, JsonParsingError
 
 import pkg/unifetch
 from pkg/util/forStr import between
@@ -60,33 +60,38 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[s
   ## Requests to Instagram internal api
   if httpMethod == HttpPost and ig.cookies.len < 100:
     raise newException(IgAuthRequired, "In order to proceed, provide your Instagram cookies to `newInstagram` procedure.")
-  let
-    uni = newUniClient(headers = newHttpHeaders({
-      "X-IG-App-ID": ig.appId,
-      "X-CSRFToken": ig.csrfToken,
-      "X-Requested-With": "XMLHttpRequest",
-      "Alt-Used": instagramUrl.hostname,
-      "Origin": $instagramUrl,
-      "Referer": $instagramUrl,
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Cookie": ig.cookies & ig.csrfToken
-    }))
-    req = await uni.request(apiUrl / endpoint, httpMethod, body, nil)
+  let uni = newUniClient(headers = newHttpHeaders({
+    "X-IG-App-ID": ig.appId,
+    "X-CSRFToken": ig.csrfToken,
+    "X-Requested-With": "XMLHttpRequest",
+    "Alt-Used": instagramUrl.hostname,
+    "Origin": $instagramUrl,
+    "Referer": $instagramUrl,
+    "Cookie": ig.cookies & ig.csrfToken
+  }))
+  if httpMethod == HttpPost:
+    uni.headers["Content-Type"] = "application/x-www-form-urlencoded"
+
+  let req = await uni.request(apiUrl / endpoint, httpMethod, body, nil)
   close uni
 
   result = req.body
 
-  if "status\":\"fail" in req.body:
-    let error = req.body.parseJson{"message"}.getStr
-    case error:
-    of "CSRF token missing or incorrect":
-      raise newException(IgMissingCsrf, error & " Raw:\l" & req.body)
-    else:
-      raise newException(IgException, error & " Raw:\l" & req.body)
-  elif req.body.len == 0:
-    raise newException(IgException, "Instagram sent a blank response. Raw:\l" & req.body)
-
   writeFile("out.json", req.body)
+
+  if "status\":\"fail" in req.body:
+    try:
+      let error = req.body.parseJson{"message"}.getStr
+      case error:
+      of "CSRF token missing or incorrect":
+        raise newException(IgMissingCsrf, error & " Raw:\l" & req.body)
+      else:
+        raise newException(IgException, error & " Raw:\l" & req.body)
+    except JsonParsingError:
+      raise newException(IgException, "Cannot parse JSON response. Check your sesssion. Raw:\l" & req.body)
+  elif req.body.len == 0:
+    raise newException(IgException, "Instagram sent a blank response. Check your session. Raw:\l" & req.body)
+
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args

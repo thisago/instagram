@@ -33,8 +33,8 @@ proc followers*(
     let nextMaxId = nextMaxId.nextMaxId
 
   let json = await ig.request(HttpGet, endpoint("friendships/$#/followers/?count=$#&max_id=$#&search_surface=follow_list_page",
-                                   userId, $limit,
-                                   if nextMaxId.len > 0: nextMaxId else: $limit))
+                              userId, $limit,
+                              if nextMaxId.len > 0: nextMaxId else: $limit))
   result = json.fromJson IgFollowersAndFollowing
 
 proc following*(
@@ -50,8 +50,8 @@ proc following*(
     let nextMaxId = nextMaxId.nextMaxId
 
   let json = await ig.request(HttpGet, endpoint("friendships/$#/following/?count=$#&max_id=$#&search_surface=follow_list_page",
-                                   userId, $limit,
-                                   if nextMaxId.len > 0: nextMaxId else: $limit))
+                              userId, $limit,
+                              if nextMaxId.len > 0: nextMaxId else: $limit))
   result = json.fromJson IgFollowersAndFollowing
 
 import instagram/api/types/post
@@ -75,5 +75,5 @@ proc feed*(
   when nextMaxId is IgFeed:
     let nextMaxId = nextMaxId.nextMaxId
   let json = await ig.request(HttpGet, endpoint("feed/user/$#/?count=$#&max_id=$#", userId,
-                                   limit, nextMaxId))
+                              limit, nextMaxId))
   result = json.fromJson IgFeed
