@@ -10,6 +10,8 @@ import pkg/jsony
 
 import instagram/core
 import instagram/api/types/user
+import instagram/api/types/post
+import instagram/api/types/friendships
 import instagram/api/types/followersAndFollowing
 
 proc follow*(
@@ -22,11 +24,12 @@ proc follow*(
     let userId = userId.id
   let
     body = "container_module=profile&nav_chain=PolarisProfileRoot:profilePage:1:via_cold_start&user_id=" & userId
-    json = parseJson await ig.request(HttpPost,
-                                      endpoint("friendships/create/$#/", userId),
-                                      body)
-  if not json{"friendship_status", "following"}.getBool:
-    raise newException(IgException, "Cannot follow user '" & userId & "'")
+    raw = await ig.request(HttpPost,
+                           endpoint("friendships/create/$#/", userId),
+                           body)
+    resp = raw.fromJson IgFriendshipStatusResponse
+  if resp.status != "ok":
+    raise newException(IgException, "Cannot follow user '" & userId & "'. Raw:" & raw)
 
 proc unfollow*(
   ig: Instagram;
@@ -38,13 +41,13 @@ proc unfollow*(
     let userId = userId.id
   let
     body = "container_module=profile&nav_chain=PolarisProfileRoot:profilePage:1:via_cold_start&user_id=" & userId
-    json = parseJson await ig.request(HttpPost,
-                                      endpoint("friendships/destroy/$#/", userId),
-                                      body)
+    raw = await ig.request(HttpPost,
+                           endpoint("friendships/destroy/$#/", userId),
+                           body)
+    json = raw.fromJson IgFriendshipStatus
   if json{"friendship_status", "following"}.getBool:
-    raise newException(IgException, "Cannot unfollow user '" & userId & "'")
+    raise newException(IgException, "Cannot unfollow user '" & userId & "'. Raw:" & raw)
 
-import instagram/api/types/post
 
 proc like*(
   ig: Instagram;
@@ -54,9 +57,11 @@ proc like*(
   ## Error will raise an exception
   when postId is IgPost:
     let postId = postId.id
-  let json = parseJson await ig.request(HttpPost, endpoint("web/likes/$#/like/", postId))
+  let
+    raw = await ig.request(HttpPost, endpoint("web/likes/$#/like/", postId))
+    json = parseJson raw
   if json{"status"}.getStr != "ok":
-    raise newException(IgException, "Cannot like post '" & postId & "'")
+    raise newException(IgException, "Cannot like post '" & postId & "'. Raw:" & raw)
 
 proc unlike*(
   ig: Instagram;
@@ -66,11 +71,12 @@ proc unlike*(
   ## Error will raise an exception
   when postId is IgPost:
     let postId = postId.id
-  let json = parseJson await ig.request(HttpPost, endpoint("web/likes/$#/unlike/", postId))
+  let
+    raw = await ig.request(HttpPost, endpoint("web/likes/$#/unlike/", postId))
+    json = parseJson raw
   if json{"status"}.getStr != "ok":
-    raise newException(IgException, "Cannot like post '" & postId & "'")
+    raise newException(IgException, "Cannot like post '" & postId & "'. Raw:" & raw)
 
-import instagram/api/types/friendships
 
 proc friendships*(
   ig: Instagram;
@@ -85,9 +91,9 @@ proc friendships*(
     elif userId is string:
       ids.add userId
   let
-    json = await ig.request(HttpPost, "friendships/show_many/",
+    raw = await ig.request(HttpPost, "friendships/show_many/",
                             "user_ids=" & ids.join ",")
-    data = json.fromJson IgFriendshipStatusResponse
+    data = raw.fromJson IgFriendshipStatusesResponse
   if data.status != "ok":
-    raise newException(IgException, "Cannot get friendships of '" & ids.join "," & "'")
+    raise newException(IgException, "Cannot get friendships of '" & ids.join "," & "'. Raw:" & raw)
   result = data.friendshipStatuses

@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.4.1 (2023/09/04)
+
+- Fixed error raised when user needs to aprove the request
+
+## Version 0.4.0 (2023/09/04)
+
+- Added `friendships` POST action to get your relationship with user
+- Added "Content-Type" just when POST
+- Fixed more types accepted functions
+
 ## Version 0.3.0 (2023/09/04)
 
 - Added first POST actions!
