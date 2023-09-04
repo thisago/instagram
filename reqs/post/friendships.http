@@ -1,12 +1,14 @@
+# @prompt cookies
+# @prompt csrf
 POST https://www.instagram.com/api/v1/friendships/show_many/ HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
-X-CSRFToken: aJrz0lrExVpKjLHgSUt23mQxIEnZ3HJW
+X-CSRFToken: {{csrf}}
 X-IG-App-ID: 936619743392459
 X-ASBD-ID: 129477
 Content-Type: application/x-www-form-urlencoded
 X-Requested-With: XMLHttpRequest
 Origin: https://www.instagram.com
 Referer: https://www.instagram.com/cartooncontainer/followers/
-Cookie: datr=vMfvZOyQp-peydq3hmYZd7p2;mid=ZO_HvQALAAHxdZ7WeOy6dZLNwNBY;ig_nrcb=1;shbid="11202\05460074378304\0541725306400:01f7c8e5199f4649812afdda830fbb62760a7e00458c355de97010d6c821efa19cc32c20";shbts="1693770400\05460074378304\0541725306400:01f7927e10e19716b82ad48a67e43acac0234b31677622ee449445ff33ed3ce00e5887f9";ig_did=3957209B-1CD9-4623-A03F-2962DE8083E0;ds_user_id=61926834271;rur="FRC\05461926834271\0541725389206:01f7c5ef4548bbc341a95d1c9c30b3ba367c6798598f06ac3c7d305375dfaed2b406951d";csrftoken=aJrz0lrExVpKjLHgSUt23mQxIEnZ3HJW
+Cookie: {{cookies}}
 
 user_ids=61353908087,32088649157,61299027355,60797255057,59795040019,60398225355,60081175511,1563111080,48074389775
