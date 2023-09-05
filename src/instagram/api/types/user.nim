@@ -3,7 +3,6 @@
 from std/options import Option
 
 type
-  # IgUserNilType* = ref object
   IgUserResponse* = ref object
     data*: IgUserData
     status*: string

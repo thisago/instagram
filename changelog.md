@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.4.2 (2023/09/04)
+
+- Added `igDebugReqFile` config to set the output file to all requests made. Example: `-d:igDebugReqFile=out.json`
+- Fixed get user following
+- Other fixes
+
 ## Version 0.4.1 (2023/09/04)
 
 - Fixed error raised when user needs to aprove the request

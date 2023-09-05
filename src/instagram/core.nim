@@ -6,6 +6,8 @@ from std/json import parseJson, `{}`, getStr, JsonParsingError
 import pkg/unifetch
 from pkg/util/forStr import between
 
+const igDebugReqFile {.strdefine.} = ""
+
 type
   IgTooManyRequests* = object of IOError
     ## Rate limit exceeded, provide the cookies
@@ -64,7 +66,7 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[s
     "X-IG-App-ID": ig.appId,
     "X-CSRFToken": ig.csrfToken,
     "X-Requested-With": "XMLHttpRequest",
-    "Alt-Used": instagramUrl.hostname,
+    # "Alt-Used": instagramUrl.hostname,
     "Origin": $instagramUrl,
     "Referer": $instagramUrl,
     "Cookie": ig.cookies & ig.csrfToken
@@ -77,7 +79,8 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[s
 
   result = req.body
 
-  # writeFile("out.json", req.body)
+  when igDebugReqFile.len > 0:
+    writeFile(igDebugReqFile, req.body)
 
   if "status\":\"fail" in req.body:
     try:
