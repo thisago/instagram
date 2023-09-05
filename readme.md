@@ -64,13 +64,11 @@ To get cookies, consider using [iecook](https://github.com/thisago/iecook) becau
 
 ## TODO
 
-- [ ] Get post comments
-- [ ] Like a post
-- [ ] Comment in a post
-- [ ] Add new post
-- [ ] Add new status
-- [x] (Un)Follow a user
-- [ ] Get your following state of a user
+- Get post comments
+- Comment in a post
+- Add new post
+- Add new status
+- Get your following state of a user
 
 ## Resources
 
