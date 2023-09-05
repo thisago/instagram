@@ -72,6 +72,15 @@ To get cookies, consider using [iecook](https://github.com/thisago/iecook) becau
 - [x] (Un)Follow a user
 - [ ] Get your following state of a user
 
+## Resources
+
+- https://instagram.api-docs.io
+
+### Related
+
+- https://github.com/pavlovdog/Instagram-private-API/blob/master/api.py
+- https://github.com/dilame/instagram-private-api
+- https://github.com/ping/instagram_private_api
 
 ## License
 
