@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.5.0 (2023/09/05)
+
+- Added logged user id extraction from cookie
+
 ## Version 0.4.2 (2023/09/04)
 
 - Added `igDebugReqFile` config to set the output file to all requests made. Example: `-d:igDebugReqFile=out.json`

@@ -24,6 +24,7 @@ type
     appId: string ## X-IG-App-ID
     csrfToken: string ## X-CSRFToken
     cookies*: string ## Optional, but without authentication there's a rate limit
+    userId*: string ## Logged user ID, gets from cookie
 
 const
   instagramUrl = parseUri "https://www.instagram.com"
@@ -45,6 +46,9 @@ proc prepare*(ig) {.async.} =
 
   ig.appId = body.between("X-IG-App-ID\":\"", "\"")
   ig.csrfToken = body.between("\\\"csrf_token\\\":\\\"", "\\\"")
+
+  if "user_id" in ig.cookies:
+    ig.userId = ig.cookies.between("user_id=", ";")
 
 proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   ## Creates new Instagram instance
@@ -103,4 +107,4 @@ when isMainModule:
   const cookies = staticRead "../../developmentcookies.txt"
   # let ig = waitFor newInstagram ""
   let ig = waitFor newInstagram cookies
-  echo waitFor ig.request(HttpPost, "friendships/create/524549267")
+  echo ig[]

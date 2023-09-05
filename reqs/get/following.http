@@ -17,7 +17,7 @@ Cookie: {{cookies}}
 
 ###
 # @prompt cookies
-GET https://www.instagram.com/api/v1/friendships/44988800462/following/?count=12&max_id=&search_surface=follow_list_page HTTP/1.1
+GET https://i.instagram.com/api/v1/friendships/61926834271/following/?count=12&max_id=&search_surface=follow_list_page&sort=descending HTTP/1.1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
