@@ -69,6 +69,7 @@ To get cookies, consider using [iecook](https://github.com/thisago/iecook) becau
 - Add new post
 - Add new status
 - Get your following state of a user
+- `follow` and `unfollow` needs to return the response object
 
 ## Resources
 

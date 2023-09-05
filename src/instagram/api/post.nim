@@ -44,8 +44,8 @@ proc unfollow*(
     raw = await ig.request(HttpPost,
                            endpoint("friendships/destroy/$#/", userId),
                            body)
-    json = raw.fromJson IgFriendshipStatus
-  if json{"friendship_status", "following"}.getBool:
+    resp = raw.fromJson IgFriendshipStatusResponse
+  if resp.status != "ok":
     raise newException(IgException, "Cannot unfollow user '" & userId & "'. Raw:" & raw)
 
 

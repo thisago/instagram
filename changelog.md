@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.5.1 (2023/09/05)
+
+- Fixed unfollow
+
 ## Version 0.5.0 (2023/09/05)
 
 - Added logged user id extraction from cookie
