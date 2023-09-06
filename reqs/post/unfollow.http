@@ -6,7 +6,7 @@ X-CSRFToken: {{csrf}}
 X-IG-App-ID: 936619743392459
 X-Requested-With: XMLHttpRequest
 Origin: https://www.instagram.com
-Referer: https://www.instagram.com/microsoft/
+Referer: https://www.instagram.com/
 Cookie: {{cookies}}
 
 container_module=profile&nav_chain=PolarisProfileRoot%3AprofilePage%3A1%3Avia_cold_start&user_id=524549267

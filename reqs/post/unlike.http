@@ -6,5 +6,5 @@ X-CSRFToken: {{csrf}}
 X-IG-App-ID: 936619743392459
 Content-Type: application/x-www-form-urlencoded
 X-Requested-With: XMLHttpRequest
-Referer: https://www.instagram.com/p/Cwp_HEeJuxE/?img_index=1
+Referer: https://www.instagram.com/
 Cookie: {{cookies}}
