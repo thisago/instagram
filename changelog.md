@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.8.0 (2023/09/07)
+
+- Added support to like feed items
+- Renamed `IgFeedItems` to `IgFeedItem`
+- Added `unifetch` dependency as url until it are't in Nimble
+- Uncommented tests
+
 ## Version 0.7.0 (2023/09/07)
 
 - Added `isLogged` to `Instagram` objects

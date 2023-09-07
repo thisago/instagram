@@ -2,7 +2,7 @@
 
 type
   IgFeed* = ref object
-    items*: seq[IgFeedItems]
+    items*: seq[IgFeedItem]
     numResults*: int64
     moreAvailable*: bool
     nextMaxId*: string
@@ -10,7 +10,7 @@ type
     autoLoadMoreEnabled*: bool
     status*: string
     message*: string ## Error message
-  IgFeedItems* = ref object
+  IgFeedItem* = ref object
     takenAt*: int64
     pk*: string
     id*: string

@@ -11,6 +11,7 @@ import pkg/jsony
 import instagram/core
 import instagram/types/api/user
 import instagram/types/api/post
+import instagram/types/api/feed
 import instagram/types/api/friendships
 import instagram/types/api/followersAndFollowing
 
@@ -51,12 +52,14 @@ proc unfollow*(
 
 proc like*(
   ig: Instagram;
-  postId: string or IgPost
+  postId: string or IgPost or IgFeedItem
 ) {.async.} =
   ## Likes the provided post
   ## Error will raise an exception
   when postId is IgPost:
     let postId = postId.id
+  when postId is IgFeedItem:
+    let postId = postId.pk
   let
     raw = await ig.request(HttpPost, endpoint("web/likes/$#/like/", postId))
     json = parseJson raw
@@ -65,12 +68,14 @@ proc like*(
 
 proc unlike*(
   ig: Instagram;
-  postId: string or IgPost
+  postId: string or IgPost or IgFeedItem
 ) {.async.} =
   ## Likes the provided post
   ## Error will raise an exception
   when postId is IgPost:
     let postId = postId.id
+  when postId is IgFeedItem:
+    let postId = postId.pk
   let
     raw = await ig.request(HttpPost, endpoint("web/likes/$#/unlike/", postId))
     json = parseJson raw
