@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.7.0 (2023/09/07)
+
+- Added `isLogged` to `Instagram` objects
+
 ## Version 0.6.0 (2023/09/07)
 
 - Added `XIGSharedData` parsing to get logged used info

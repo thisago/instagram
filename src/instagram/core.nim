@@ -93,11 +93,14 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   if cookies.len > 0:
     result.headers.add("Cookie", result.cookies)
 
+func isLogged*(ig): bool =
+  ## Checks if this Instagram instance is logged in
+  result = not ig.sharedData.config.viewer.isNil
 
 # Internal proc
 proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[string] {.async.} =
   ## Requests to Instagram internal api
-  if httpMethod == HttpPost and ig.cookies.len < 100:
+  if httpMethod == HttpPost and not ig.isLogged:
     raise newException(IgAuthRequired, "In order to proceed, provide your Instagram cookies to `newInstagram` procedure.")
   let uni = newUniClient(headers = ig.headers)
   if httpMethod == HttpPost:
@@ -123,7 +126,6 @@ proc request*(ig; httpMethod: HttpMethod; endpoint: string; body = ""): Future[s
       raise newException(IgException, "Cannot parse JSON response. Check your sesssion. Raw:\l" & req.body)
   elif req.body.len == 0:
     raise newException(IgException, "Instagram sent a blank response. Check your session. Raw:\l" & req.body)
-
 
 func endpoint*(path: string; args: varargs[string, `$`]): string =
   path % args
