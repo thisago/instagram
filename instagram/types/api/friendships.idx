@@ -1,0 +1,5 @@
+nimTitle	friendships	instagram/types/api/friendships.html	module instagram/types/api/friendships		0
+nim	IgFriendshipStatusResponse	instagram/types/api/friendships.html#IgFriendshipStatusResponse	type IgFriendshipStatusResponse		4
+nim	IgFriendshipStatusesResponse	instagram/types/api/friendships.html#IgFriendshipStatusesResponse	type IgFriendshipStatusesResponse		8
+nim	IgFriendshipStatuses	instagram/types/api/friendships.html#IgFriendshipStatuses	type IgFriendshipStatuses		11
+nim	IgFriendshipStatus	instagram/types/api/friendships.html#IgFriendshipStatus	type IgFriendshipStatus		12

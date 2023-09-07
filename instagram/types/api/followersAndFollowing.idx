@@ -1,0 +1,7 @@
+nimTitle	followersAndFollowing	instagram/types/api/followersAndFollowing.html	module instagram/types/api/followersAndFollowing		0
+nim	IgFollowersAndFollowing	instagram/types/api/followersAndFollowing.html#IgFollowersAndFollowing	type IgFollowersAndFollowing		4
+nim	IgFollowersUser	instagram/types/api/followersAndFollowing.html#IgFollowersUser	type IgFollowersUser		14
+nim	IgFollowersIsPossibleBadActor	instagram/types/api/followersAndFollowing.html#IgFollowersIsPossibleBadActor	type IgFollowersIsPossibleBadActor		32
+nim	IgFollowersIsPossibleImpersonator	instagram/types/api/followersAndFollowing.html#IgFollowersIsPossibleImpersonator	type IgFollowersIsPossibleImpersonator		36
+nim	IgFollowersIsPossibleImpersonatorThreads	instagram/types/api/followersAndFollowing.html#IgFollowersIsPossibleImpersonatorThreads	type IgFollowersIsPossibleImpersonatorThreads		39
+nim	id	instagram/types/api/followersAndFollowing.html#id,IgFollowersUser	proc id(user: IgFollowersUser): string		43

@@ -1,0 +1,9 @@
+nimTitle	xigSharedData	instagram/types/xigSharedData.html	module instagram/types/xigSharedData		0
+nim	XigSharedData	instagram/types/xigSharedData.html#XigSharedData	type XigSharedData		5
+nim	Config	instagram/types/xigSharedData.html#Config	type Config		28
+nim	Viewer	instagram/types/xigSharedData.html#Viewer	type Viewer		32
+nim	ServerChecks	instagram/types/xigSharedData.html#ServerChecks	type ServerChecks		64
+nim	ToCache	instagram/types/xigSharedData.html#ToCache	type ToCache		66
+nim	Encryption	instagram/types/xigSharedData.html#Encryption	type Encryption		68
+nim	csrfToken	instagram/types/xigSharedData.html#csrfToken	proc csrfToken(xigsc: XigSharedData): string		112
+nim	userId	instagram/types/xigSharedData.html#userId	proc userId(xigsc: XigSharedData): string		117

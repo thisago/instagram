@@ -1,0 +1,13 @@
+nimTitle	post	instagram/types/api/post.html	module instagram/types/api/post		0
+nim	IgPost	instagram/types/api/post.html#IgPost	type IgPost		4
+nim	IgPostComments	instagram/types/api/post.html#IgPostComments	type IgPostComments		26
+nim	IgPostPreviewChildComments	instagram/types/api/post.html#IgPostPreviewChildComments	type IgPostPreviewChildComments		56
+nim	IgPostUser	instagram/types/api/post.html#IgPostUser	type IgPostUser		74
+nim	IgPostOtherPreviewUsers	instagram/types/api/post.html#IgPostOtherPreviewUsers	type IgPostOtherPreviewUsers		88
+nim	IgPostUser2	instagram/types/api/post.html#IgPostUser2	type IgPostUser2		91
+nim	IgPostCaption	instagram/types/api/post.html#IgPostCaption	type IgPostCaption		104
+nim	IgPostUser3	instagram/types/api/post.html#IgPostUser3	type IgPostUser3		122
+nim	IgPostFanClubStatusSyncInfo	instagram/types/api/post.html#IgPostFanClubStatusSyncInfo	type IgPostFanClubStatusSyncInfo		134
+nim	IgPostIgPostPreviewComments	instagram/types/api/post.html#IgPostIgPostPreviewComments	type IgPostIgPostPreviewComments		137
+nim	IgPostUser4	instagram/types/api/post.html#IgPostUser4	type IgPostUser4		158
+nim	IgPostQuickResponseEmojis	instagram/types/api/post.html#IgPostQuickResponseEmojis	type IgPostQuickResponseEmojis		171

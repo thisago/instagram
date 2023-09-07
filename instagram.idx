@@ -1,0 +1,2 @@
+nimTitle	instagram	instagram.html	module instagram		0
+nim	hasNextPage	instagram.html#hasNextPage	proc hasNextPage(obj: IgFollowersAndFollowing or IgFeed): bool		22

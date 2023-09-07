@@ -1,0 +1,6 @@
+nimTitle	post	instagram/api/post.html	module instagram/api/post		0
+nim	follow	instagram/api/post.html#follow,Instagram,	proc follow(ig: Instagram; userId: string or IgUser or IgFollowersUser): owned(\n    Future[void])		21
+nim	unfollow	instagram/api/post.html#unfollow,Instagram,	proc unfollow(ig: Instagram; userId: string or IgUser or IgFollowersUser): owned(\n    Future[void])		38
+nim	like	instagram/api/post.html#like,Instagram,	proc like(ig: Instagram; postId: string or IgPost or IgFeedItem): owned(\n    Future[void])		56
+nim	unlike	instagram/api/post.html#unlike,Instagram,	proc unlike(ig: Instagram; postId: string or IgPost or IgFeedItem): owned(\n    Future[void])		72
+nim	friendships	instagram/api/post.html#friendships,Instagram,	proc friendships(ig: Instagram;\n            userIds: seq[string] or seq[IgUser] or seq[IgFollowersUser]): Future[\n    IgFriendshipStatuses]		89
