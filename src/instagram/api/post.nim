@@ -9,10 +9,10 @@ from std/strutils import join
 import pkg/jsony
 
 import instagram/core
-import instagram/api/types/user
-import instagram/api/types/post
-import instagram/api/types/friendships
-import instagram/api/types/followersAndFollowing
+import instagram/types/api/user
+import instagram/types/api/post
+import instagram/types/api/friendships
+import instagram/types/api/followersAndFollowing
 
 proc follow*(
   ig: Instagram;

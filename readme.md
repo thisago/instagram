@@ -16,6 +16,8 @@ With this library, you can get data and even interact with Instagram!
 
 ## Features
 
+- **`ig.sharedData`**: Logged account data
+
 The following internal endpoints are implemented:
 
 ### GET

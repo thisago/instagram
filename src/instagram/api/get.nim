@@ -7,7 +7,10 @@ import pkg/jsony
 
 import instagram/core
 
-import instagram/api/types/user
+import instagram/types/api/user
+import instagram/types/api/post
+import instagram/types/api/feed
+import instagram/types/api/followersAndFollowing
 
 proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   ## Gets instagram user from their internal API
@@ -18,7 +21,6 @@ proc user*(ig: Instagram; username: string): Future[IgUser] {.async.} =
   result.status = resp.status
   result.message = resp.message
 
-import instagram/api/types/followersAndFollowing
 
 proc followers*(
   ig: Instagram;
@@ -54,14 +56,12 @@ proc following*(
                               if nextMaxId.len > 0: nextMaxId else: ""))
   result = json.fromJson IgFollowersAndFollowing
 
-import instagram/api/types/post
 
 proc post*(ig: Instagram; postId: string): Future[IgPost] {.async.} =
   ## Gets instagram user from their internal API
   let json = await ig.request(HttpGet, endpoint("media/$#/comments/?can_support_threading=true&permalink_enabled=false", postId))
   result = json.fromJson IgPost
 
-import instagram/api/types/feed
 
 proc feed*(
   ig: Instagram;

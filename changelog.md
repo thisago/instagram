@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.6.0 (2023/09/07)
+
+- Added `XIGSharedData` parsing to get logged used info
+- Better HTTP headers
+- Moved `instagram/api/types/*.nim` to `instagram/types/api/*.nim`
+
 ## Version 0.5.1 (2023/09/05)
 
 - Fixed unfollow
@@ -56,4 +62,3 @@
 - Added user API endpoint
 - Fixed user types
 - Added media API endpoint
-!

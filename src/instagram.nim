@@ -2,13 +2,13 @@ import instagram/core except get, endpoint
 export core
 
 # Types
-import instagram/api/types/user
+import instagram/types/api/user
 export user except IgUserResponse
-import instagram/api/types/followersAndFollowing
+import instagram/types/api/followersAndFollowing
 export followersAndFollowing
-import instagram/api/types/post
+import instagram/types/api/post
 export post
-import instagram/api/types/feed
+import instagram/types/api/feed
 export feed
 
 # API
