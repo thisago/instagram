@@ -10,6 +10,8 @@ import instagram/types/api/post
 export post
 import instagram/types/api/feed
 export feed
+import instagram/types/xigSharedData
+export xigSharedData
 
 # API
 import instagram/api/get
