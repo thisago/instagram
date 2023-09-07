@@ -43,6 +43,8 @@ The following internal endpoints are implemented:
 > This implementation may violate the Instagram's terms of use, to prevent bans,
 > call the API with random delays to looks like a human.
 
+The full documentation is [hosted at Github Pages](https://thisago.github.io/instagram)
+
 **Let's start with the usage guide**
 
 ### Getting data
