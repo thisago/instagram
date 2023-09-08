@@ -6,8 +6,8 @@ import instagram/types/api/user
 export user except IgUserResponse
 import instagram/types/api/followersAndFollowing
 export followersAndFollowing
-import instagram/types/api/post
-export post
+import instagram/types/api/post as postTypes
+export postTypes
 import instagram/types/api/feed
 export feed
 import instagram/types/xigSharedData

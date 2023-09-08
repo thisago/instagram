@@ -68,12 +68,15 @@ To get cookies, consider using [iecook](https://github.com/thisago/iecook) becau
 
 ## TODO
 
-- Get post comments
-- Comment in a post
-- Add new post
-- Add new status
-- Get your following state of a user
-- `follow` and `unfollow` needs to return the response object
+- [ ] `follow` and `unfollow` needs to return the response object
+
+- [ ] POST
+  - [ ] Create posts
+  - [ ] Create status posts
+  - [ ] Comment in a post
+- [ ] GET
+  - [ ] Get post comments
+  - [ ] Get your following state of a user
 
 ## Resources
 

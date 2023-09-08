@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.8.1 (2023/09/07)
+
+- Fixed compilation in older versions
+- Fixed tests
+
 ## Version 0.8.0 (2023/09/07)
 
 - Added support to like feed items

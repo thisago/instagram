@@ -23,7 +23,7 @@ type
     ## Rate limit exceeded, provide the cookies
     ## TODO: Implement
   IgMissingCsrf* = object of IOError
-    ## The request depends on CSRF Token, but it's not present
+    ## The request depends on CSRF Token, but it's not present/valid
   IgAuthRequired* = object of IOError
     ## The request cannot be done without authentication cookies
   IgException* = object of IOError
