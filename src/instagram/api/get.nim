@@ -65,12 +65,12 @@ proc post*(ig: Instagram; postId: string): Future[IgPost] {.async.} =
 
 proc feed*(
   ig: Instagram;
-  userId: string or IgUser; ## or IgUser to get the id
+  userId: string or IgUser or IgFollowersUser; ## or IgUser to get the id
   nextMaxId: string or IgFeed = ""; ## or IgFeed
   limit = 12
 ): Future[IgFeed] {.async.} =
   ## Gets the Instagram feed of specific user
-  when userId is IgUser:
+  when userId is IgUser or userId is IgFollowersUser:
     let userId = userId.id
   when nextMaxId is IgFeed:
     let nextMaxId = nextMaxId.nextMaxId

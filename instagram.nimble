@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.8.1"
+version       = "0.8.2"
 author        = "Thiago Navarro"
 description   = "Instagram internal web api implementation"
 license       = "MIT"
