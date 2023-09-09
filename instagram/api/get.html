@@ -55,9 +55,9 @@
     <summary><a class="reference reference-toplevel" href="#12" id="62">Procs</a></summary>
     <ul class="simple simple-toc-section">
       <ul class="simple nested-toc-section">feed
-  <li><a class="reference" href="#feed%2CInstagram%2C%2Cstring%2Cint" title="feed(ig: Instagram; userId: string or IgUser; ## or IgUser to get the id
+  <li><a class="reference" href="#feed%2CInstagram%2C%2Cstring%2Cint" title="feed(ig: Instagram; userId: string or IgUser or IgFollowersUser; ## or IgUser to get the id
      nextMaxId: string or IgFeed = &quot;&quot;; ## or IgFeed
-     limit = 12): Future[IgFeed]">feed(ig: Instagram; userId: string or IgUser; ## or IgUser to get the id
+     limit = 12): Future[IgFeed]">feed(ig: Instagram; userId: string or IgUser or IgFollowersUser; ## or IgUser to get the id
      nextMaxId: string or IgFeed = &quot;&quot;; ## or IgFeed
      limit = 12): Future[IgFeed]</a></li>
 
@@ -112,7 +112,7 @@
   <dl class="item">
     <div id="feed-procs-all">
   <div id="feed,Instagram,,string,int">
-  <dt><pre><span class="Keyword">proc</span> <a href="#feed%2CInstagram%2C%2Cstring%2Cint"><span class="Identifier">feed</span></a><span class="Other">(</span><span class="Identifier">ig</span><span class="Other">:</span> <a href="../core.html#Instagram"><span class="Identifier">Instagram</span></a><span class="Other">;</span> <span class="Identifier">userId</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Keyword">or</span> <a href="../types/api/user.html#IgUser"><span class="Identifier">IgUser</span></a><span class="Other">;</span> <span class="Comment">## or IgUser to get the id</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#feed%2CInstagram%2C%2Cstring%2Cint"><span class="Identifier">feed</span></a><span class="Other">(</span><span class="Identifier">ig</span><span class="Other">:</span> <a href="../core.html#Instagram"><span class="Identifier">Instagram</span></a><span class="Other">;</span> <span class="Identifier">userId</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Keyword">or</span> <a href="../types/api/user.html#IgUser"><span class="Identifier">IgUser</span></a> <span class="Keyword">or</span> <a href="../types/api/followersAndFollowing.html#IgFollowersUser"><span class="Identifier">IgFollowersUser</span></a><span class="Other">;</span> <span class="Comment">## or IgUser to get the id</span>
           <span class="Identifier">nextMaxId</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Keyword">or</span> <a href="../types/api/feed.html#IgFeed"><span class="Identifier">IgFeed</span></a> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Comment">## or IgFeed</span>
           <span class="Identifier">limit</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Future</span><span class="Other">[</span><a href="../types/api/feed.html#IgFeed"><span class="Identifier">IgFeed</span></a><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">stackTrace</span><span class="Other">:</span> <span class="DecNumber">false</span></span>.}</pre></dt>
   <dd>
@@ -195,7 +195,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-08 00:07:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-09-09 22:44:48 UTC</small>
       </div>
     </div>
   </div>
