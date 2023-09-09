@@ -3,6 +3,7 @@
 ## Version 0.8.2 (2023/09/10)
 
 - Added `IgFollowersUser` support for `feed` GET
+- Added more headers in requests
 
 ## Version 0.8.1 (2023/09/07)
 

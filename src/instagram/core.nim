@@ -72,6 +72,14 @@ proc newInstagram*(cookies = ""): Future[Instagram] {.async.} =
   result.headers = newHttpHeaders({
     "X-Requested-With": "XMLHttpRequest",
     # "Alt-Used": instagramUrl.hostname,
+    "Viewport-Width": "1920",
+    "X-ASBD-ID": "129477",
+    "Dpr": "1",
+    "Pragma": "no-cache",
+    "Cache-Control": "no-cache",
+    "Accept": "*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "authority": $instagramUrl.hostname,
     "Origin": $instagramUrl,
     "Referer": $instagramUrl,
   })
