@@ -14,7 +14,7 @@ type
     takenAt*: int64
     pk*: string
     id*: string
-    deviceTimestamp*: int64
+    # deviceTimestamp*: string or int # Removed because it's type changes
     clientCacheKey*: string
     filterType*: int64
     captionIsEdited*: bool

@@ -59,7 +59,7 @@ proc prepare*(ig) {.async.} =
     uni = newUniClient(headers = ig.headers)
     req = await uni.get instagramUrl
     body = req.body
-  close uni
+  close uni 
 
   ig.appId = body.between("X-IG-App-ID\":\"", "\"")
 

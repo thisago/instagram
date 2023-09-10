@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.8.3 (2023/09/10)
+
+- Fixed feed JSON parsing crash
+
 ## Version 0.8.2 (2023/09/10)
 
 - Added `IgFollowersUser` support for `feed` GET
