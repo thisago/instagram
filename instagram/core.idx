@@ -7,6 +7,6 @@ nim	IgException	instagram/core.html#IgException	object IgException		29
 nim	Instagram	instagram/core.html#Instagram	type Instagram		33
 nim	prepare	instagram/core.html#prepare	proc prepare(ig: Instagram): owned(Future[void])		53
 nim	newInstagram	instagram/core.html#newInstagram,string	proc newInstagram(cookies = ""): Future[Instagram]		68
-nim	isLogged	instagram/core.html#isLogged	proc isLogged(ig: Instagram): bool		96
-nim	request	instagram/core.html#request,,HttpMethod,string,string	proc request(ig: Instagram; httpMethod: HttpMethod; endpoint: string; body = ""): Future[\n    string]		101
-nim	endpoint	instagram/core.html#endpoint,string,varargs[string,]	proc endpoint(path: string; args: varargs[string, `$`]): string		130
+nim	isLogged	instagram/core.html#isLogged	proc isLogged(ig: Instagram): bool		104
+nim	request	instagram/core.html#request,,HttpMethod,string,string	proc request(ig: Instagram; httpMethod: HttpMethod; endpoint: string; body = ""): Future[\n    string]		109
+nim	endpoint	instagram/core.html#endpoint,string,varargs[string,]	proc endpoint(path: string; args: varargs[string, `$`]): string		138
