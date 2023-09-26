@@ -74,6 +74,6 @@ proc feed*(
     let userId = userId.id
   when nextMaxId is IgFeed:
     let nextMaxId = nextMaxId.nextMaxId
-  let json = await ig.request(HttpGet, endpoint("feed/user/$#/?count=$#&max_id=$#", userId,
-                              limit, nextMaxId))
+  let json = await ig.request(HttpGet, endpoint("feed/user/$#/?count=$#&max_id=$#",
+                              userId, limit, nextMaxId))
   result = json.fromJson IgFeed
