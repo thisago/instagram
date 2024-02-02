@@ -6,6 +6,9 @@
 
 **[About](#about) - [Features](#features)** - [License](#license)
 
+> **Warning**
+> The maintenance of this project is currently suspended, since it's a internal API implementation, things break easier.
+
 </div>
 
 ## About
